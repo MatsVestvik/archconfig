@@ -6,7 +6,7 @@ height=30%
 location=center
 lines=0
 columns=0
-allow_images=false
+allow_images=true
 
 # Behavior
 insensitive=true

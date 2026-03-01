@@ -43,7 +43,7 @@ window#waybar {
 
 .modules-left {
   margin-top: 30px;
-  font-size: 10px;
+  font-size: 20px;
   color: white;
 }
 
@@ -54,27 +54,25 @@ window#waybar {
 
 .modules-right {
   margin-bottom: 10px;
-  font-size: 10px;
+  font-size: 20px;
 }
 
 #battery {
-  font-size: 8px;
+  font-size: 15px;
   color: white;
 }
 
 #pulseaudio{
-  font-size: 10px;
   color: white;
 }
 
 #network{
-  padding-left: 0px;
-  font-size: 10px;
+  padding-left: 4px;
   color: #8AADF4;
 }
 
 #cpu{
-  font-size:10px;
+  font-size: 15px;
   color: white;
 } 
 

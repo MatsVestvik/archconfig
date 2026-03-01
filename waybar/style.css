@@ -71,6 +71,10 @@ window#waybar {
   color: #8AADF4;
 }
 
+#bluetooth{
+  color: #8AADF4;
+}
+
 #cpu{
   font-size: 15px;
   color: white;

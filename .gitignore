@@ -10,6 +10,8 @@
 !waybar/*
 !wofi/
 !wofi/*
+!nvim/
+!nvim/*
 
 # Track .gitignore
 !.gitignore
@@ -19,3 +21,4 @@
 !hypr/**/*
 !waybar/**/*
 !wofi/**/*
+!nvim/**/*

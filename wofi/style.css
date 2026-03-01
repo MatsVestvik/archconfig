@@ -1,0 +1,53 @@
+window {
+    margin: 0px;
+    background-color: rgba(0, 0, 0, 1);
+    font-family: "JetBrains Mono", "Fira Code", monospace;
+    font-size: 16px;
+}
+
+#input {
+    margin: 15px;
+    padding: 10px;
+    border-radius: 0px;
+    border-bottom : none;
+    color: #8AADF4;
+    background-color: transparent;
+}
+
+#inner-box {
+    margin: 5px;
+    border: none;
+    background-color: transparent;
+}
+
+#outer-box {
+    margin: 5px;
+    border: none;
+    background-color: transparent;
+}
+
+#scroll {
+    margin: 0px;
+    border: none;
+}
+
+#text {
+    margin: 5px;
+    border: none;
+    color: #f8f8f2;
+}
+
+#text:selected {
+  color: #8AADF4;
+}
+
+#entry {
+    margin: 5px;
+    border: none;
+    border-radius: 0px;
+    background-color: transparent;
+}
+
+#entry:selected {
+  color: transparent;
+}

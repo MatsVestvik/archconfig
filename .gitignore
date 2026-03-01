@@ -1,0 +1,21 @@
+# Ignore everything
+*
+
+# Track these folders and their contents
+!neofetch/
+!neofetch/*
+!hypr/
+!hypr/*
+!waybar/
+!waybar/*
+!wofi/
+!wofi/*
+
+# Track .gitignore
+!.gitignore
+
+# Optionally track subdirectories if they exist
+!neofetch/**/*
+!hypr/**/*
+!waybar/**/*
+!wofi/**/*

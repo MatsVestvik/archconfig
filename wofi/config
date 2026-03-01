@@ -1,0 +1,25 @@
+# General settings
+show=drun
+prompt=Search...
+width=20%
+height=100%
+location=top_left
+lines=0
+columns=0
+allow_images=false
+
+# Behavior
+insensitive=true
+hide_scroll=true
+term=kitty
+no_actions=true
+
+# Key bindings
+key_expand=Tab
+key_mode_expand=Ctrl+l
+key_mode=Ctrl+Tab
+key_up=Up,k
+key_down=Down,j
+key_left=Left,h
+key_right=Right,l
+key_accept=Return

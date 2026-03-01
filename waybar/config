@@ -1,0 +1,90 @@
+{
+  "layer": "top",
+  "position": "right",
+  "height": "100%",
+  "width": 0,
+  
+  "modules-left": ["custom/hour-tens", "custom/hour-ones","custom/colon", "custom/minute-tens", "custom/minute-ones"],
+  "modules-center": ["hyprland/workspaces"],
+  "modules-right": ["cpu","network", "pulseaudio", "battery"],
+  
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "format-icons": {
+      "default": "󰄰",
+      "active": "",
+        "1": "", 
+        "2": "󱁍",  
+        "3": "󱡝",
+        "4": "",
+    },
+    "persistent-workspaces": {
+      "*": [1, 2, 3, 4, 5]
+    }
+  },
+  
+  "custom/hour-tens": {
+    "exec": "date +'%H' | cut -c1",
+    "interval": 1,
+    "format": "{}"
+  },
+  
+  "custom/hour-ones": {
+    "exec": "date +'%H' | cut -c2",
+    "interval": 1,
+    "format": "{}"
+  },
+
+  "custom/colon": {
+    "exec": "echo ':'",
+    "interval": 1,
+    "format": "{}"
+  },
+
+  "custom/minute-tens": {
+    "exec": "date +'%M' | cut -c1",
+    "interval": 1,
+    "format": "{}"
+  },
+  
+  "custom/minute-ones": {
+    "exec": "date +'%M' | cut -c2",
+    "interval": 1,
+    "format": "{}"
+  },
+
+  // Battery module configuration
+  "battery": {
+      "format": "{capacity}%",
+      "format-charging": "<span foreground='#EED49F'>{icon} {capacity}󱐋</span>",
+      "interval": 10
+  },
+
+  "pulseaudio": {
+    "format": "{icon}",
+    "format-muted": "󰖁",
+    "format-icons": {
+    "default": ["󰕿", "󰖀", "󰕾"]
+  },
+  "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+  "on-click-right": "pavucontrol",
+  "scroll-step": 1,
+  "tooltip": false
+  },
+
+  "network": {
+    "format": "{ifname}",
+    "format-wifi": "󰖩 ",
+    "format-ethernet": "󰈀 ",
+    "format-disconnected": "󰖪 ",
+    "tooltip-format": "{ifname} via {gwaddr} ({ipaddr}/{cidr})\n{essid} ({signalStrength}%)",
+    "on-click": "networkmanager_dmenu",
+    "on-click-right": "alacritty -e nmtui"
+  },
+
+  "cpu": {
+    "format": "{usage}%",
+    "interval": 2
+  }
+}
+

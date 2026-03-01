@@ -1,0 +1,86 @@
+* {
+    border: none;
+    font-family: "FiraCode Nerd Font";  
+    font-weight: normal;
+}
+
+window#waybar {
+  background-clip: padding-box;
+}
+
+#waybar {
+  background: rgba(0, 0, 0, 0);
+}
+
+#workspaces button {
+  font-size: 15px;
+  color: white; 
+}
+
+
+#workspaces button:nth-child(1) {
+    color: #A6DA95;  
+}
+
+#workspaces button:nth-child(2) {
+    color: #8BD5CA;  
+}
+
+#workspaces button:nth-child(3) {
+    color: #EED49F; 
+}
+
+#workspaces button:nth-child(4) {
+    color: #ED8796;  
+}
+
+#workspaces button:nth-child(5) {
+    color: #F5BDE6;  
+}
+
+#workspaces button.active {
+}
+
+.modules-left {
+  margin-top: 30px;
+  font-size: 10px;
+  color: white;
+}
+
+.modules-center {
+  min-width: 0px;
+  padding-right: 0px;
+}
+
+.modules-right {
+  margin-bottom: 10px;
+  font-size: 10px;
+}
+
+#battery {
+  font-size: 8px;
+  color: white;
+}
+
+#pulseaudio{
+  font-size: 10px;
+  color: white;
+}
+
+#network{
+  padding-left: 0px;
+  font-size: 10px;
+  color: #8AADF4;
+}
+
+#cpu{
+  font-size:10px;
+  color: white;
+} 
+
+#hyprland-workspaces {
+  padding: 0px;
+}
+
+
+

@@ -12,6 +12,7 @@
 !wofi/*
 !nvim/
 !nvim/*
+!Code/User/settings.json
 
 # Track .gitignore
 !.gitignore

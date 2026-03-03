@@ -12,6 +12,8 @@
 !wofi/*
 !nvim/
 !nvim/*
+!kitty/
+!kitty/*
 !Code/User/settings.json
 
 # Track .gitignore
@@ -23,3 +25,4 @@
 !waybar/**/*
 !wofi/**/*
 !nvim/**/*
+!kitty/**/*

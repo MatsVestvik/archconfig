@@ -15,6 +15,9 @@
 !kitty/
 !kitty/*
 !Code/User/settings.json
+!cava/
+!cava/*
+!cava/**/*
 
 # Track .gitignore
 !.gitignore

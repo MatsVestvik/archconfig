@@ -5,11 +5,11 @@
 }
 
 window#waybar {
-  background-clip: padding-box;
 }
 
 #waybar {
   background: rgba(0, 0, 0, 0);
+  padding-left: 0px;
 }
 
 #workspaces button {

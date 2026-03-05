@@ -42,7 +42,6 @@ window#waybar {
 }
 
 .modules-left {
-  margin-top: 30px;
   font-size: 20px;
   color: white;
 }
@@ -53,13 +52,46 @@ window#waybar {
 }
 
 .modules-right {
-  margin-bottom: 10px;
   font-size: 20px;
+}
+
+window#waybar.right .modules-left {
+  margin-top: 30px;
+}
+
+window#waybar.right .modules-right {
+  margin-bottom: 10px;
+}
+
+window#waybar.bottom .modules-left,
+window#waybar.bottom .modules-center,
+window#waybar.bottom .modules-right {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 #battery {
   font-size: 15px;
-  color: white;
+  color: #cad3f5;
+}
+
+#battery.good {
+  color: #a6da95;
+}
+
+#battery.warning {
+  color: #eed49f;
+}
+
+#battery.critical {
+  color: #ed8796;
+}
+
+#battery.charging,
+#battery.plugged {
+  color: #8bd5ca;
 }
 
 #pulseaudio{

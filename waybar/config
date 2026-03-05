@@ -6,7 +6,7 @@
     "width": 34,
     "modules-left": ["custom/hour-tens", "custom/hour-ones", "custom/colon", "custom/minute-tens", "custom/minute-ones"],
     "modules-center": [],
-    "modules-right": ["cpu", "bluetooth", "network", "pulseaudio", "battery"],
+    "modules-right": [],
 
     "custom/hour-tens": {
       "exec": "date +'%H' | cut -c1",
@@ -36,11 +36,61 @@
       "exec": "date +'%M' | cut -c2",
       "interval": 1,
       "format": "{}"
-    },
+    }
+
+
+  },
+  {
+    "layer": "top",
+    "position": "top",
+    "height": 20,
+    "modules-left": [],
+    "modules-center": ["hyprland/workspaces"],
+    "modules-right": [],
+
+    "hyprland/workspaces": {
+      "format": "{icon}",
+      "format-icons": {
+        "default": "󰄰",
+        "active": "",
+        "1": "",
+        "2": "󱁍",
+        "3": "󱡝",
+        "4": ""
+      },
+      "persistent-workspaces": {
+        "*": [1, 2, 3, 4, 5]
+      }
+    }
+  },
+  {
+    "layer": "top",
+    "position": "left",
+    "height": "100%",
+    "width": 25,
+    "modules-left": [],
+    "modules-center": [],
+    "modules-right": []
+  },
+  {
+    "layer": "top",
+    "position": "bottom",
+    "height": 20,
+    "modules-left": ["bluetooth", "network", "pulseaudio"],
+    "modules-center": ["battery"],
+    "modules-right": ["cpu"],
 
     "battery": {
-      "format": "{capacity}%",
-      "format-charging": "<span foreground='#EED49F'>{icon} {capacity}󱐋</span>",
+      "states": {
+        "good": 80,
+        "warning": 30,
+        "critical": 15
+      },
+      "format": "{icon} {capacity}%",
+      "format-charging": "󰂄 {capacity}%",
+      "format-plugged": " {capacity}%",
+      "format-full": "󰁹 100%",
+      "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
       "interval": 10
     },
 
@@ -74,48 +124,8 @@
     },
 
     "cpu": {
-      "format": "{usage}%",
+      "format": "󰍛 {usage}%",
       "interval": 2
     }
-  },
-  {
-    "layer": "top",
-    "position": "top",
-    "height": 30,
-    "modules-left": [],
-    "modules-center": ["hyprland/workspaces"],
-    "modules-right": [],
-
-    "hyprland/workspaces": {
-      "format": "{icon}",
-      "format-icons": {
-        "default": "󰄰",
-        "active": "",
-        "1": "",
-        "2": "󱁍",
-        "3": "󱡝",
-        "4": ""
-      },
-      "persistent-workspaces": {
-        "*": [1, 2, 3, 4, 5]
-      }
-    }
-  },
-  {
-    "layer": "top",
-    "position": "left",
-    "height": "100%",
-    "width": 24,
-    "modules-left": [],
-    "modules-center": [],
-    "modules-right": []
-  },
-  {
-    "layer": "top",
-    "position": "bottom",
-    "height": 20,
-    "modules-left": [],
-    "modules-center": [],
-    "modules-right": []
   }
 ]

@@ -14,28 +14,44 @@ window#waybar {
 
 #workspaces button {
   font-size: 15px;
-  color: white; 
+  color: #c0caf5;
 }
 
 
 #workspaces button:nth-child(1) {
-    color: #A6DA95;  
+  color: #9ece6a;
 }
 
 #workspaces button:nth-child(2) {
-    color: #8BD5CA;  
+  color: #7dcfff;
 }
 
 #workspaces button:nth-child(3) {
-    color: #EED49F; 
+  color: #e0af68;
 }
 
 #workspaces button:nth-child(4) {
-    color: #ED8796;  
+  color: #f7768e;
 }
 
 #workspaces button:nth-child(5) {
-    color: #F5BDE6;  
+  color: #bb9af7;
+}
+
+#workspaces button:nth-child(6) {
+  color: #2ac3de;
+}
+
+#workspaces button:nth-child(7) {
+  color: #73daca;
+}
+
+#workspaces button:nth-child(8) {
+  color: #ff9e64;
+}
+
+#workspaces button:nth-child(9) {
+  color: #7aa2f7;
 }
 
 #workspaces button.active {
@@ -43,7 +59,7 @@ window#waybar {
 
 .modules-left {
   font-size: 20px;
-  color: white;
+  color: #c0caf5;
 }
 
 .modules-center {
@@ -74,42 +90,42 @@ window#waybar.bottom .modules-right {
 
 #battery {
   font-size: 15px;
-  color: #cad3f5;
+  color: #c0caf5;
 }
 
 #battery.good {
-  color: #a6da95;
+  color: #9ece6a;
 }
 
 #battery.warning {
-  color: #eed49f;
+  color: #e0af68;
 }
 
 #battery.critical {
-  color: #ed8796;
+  color: #f7768e;
 }
 
 #battery.charging,
 #battery.plugged {
-  color: #8bd5ca;
+  color: #7dcfff;
 }
 
 #pulseaudio{
-  color: white;
+  color: #c0caf5;
 }
 
 #network{
   padding-left: 4px;
-  color: #8AADF4;
+  color: #7aa2f7;
 }
 
 #bluetooth{
-  color: #8AADF4;
+  color: #7aa2f7;
 }
 
 #cpu{
   font-size: 15px;
-  color: white;
+  color: #c0caf5;
 } 
 
 #hyprland-workspaces {

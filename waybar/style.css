@@ -71,6 +71,10 @@ window#waybar {
   font-size: 20px;
 }
 
+window#waybar.top .modules-center{
+  margin-left: 30px;
+}
+
 window#waybar.right .modules-left {
   margin-top: 30px;
 }

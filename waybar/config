@@ -46,7 +46,13 @@
     "height": 20,
     "modules-left": [],
     "modules-center": ["hyprland/workspaces"],
-    "modules-right": [],
+    "modules-right": ["clock"],
+
+    "clock": {
+      "interval": 60,
+      "format": "{:%d %b  W%V}",
+      "tooltip-format": "{:%A, %d %B %Y}"
+    },
 
     "hyprland/workspaces": {
       "format": "{icon}",

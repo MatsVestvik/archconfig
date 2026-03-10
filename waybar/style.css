@@ -132,6 +132,10 @@ window#waybar.bottom .modules-right {
   color: #c0caf5;
 } 
 
+#clock {
+  color: #c0caf5;
+}
+
 #hyprland-workspaces {
   padding: 0px;
 }

@@ -14,6 +14,7 @@
 !nvim/*
 !kitty/
 !kitty/*
+!Code/*
 !Code/User/settings.json
 !Code/User/keybindings.json
 !cava/

@@ -1,0 +1,76 @@
+{
+  "workbench.iconTheme": "catppuccin-frappe",
+
+  "editor.lineNumbers": "relative",
+  "editor.cursorStyle": "line",
+  "editor.cursorBlinking": "blink",
+  "editor.cursorSmoothCaretAnimation": "off",
+  "editor.smoothScrolling": false,
+  "editor.minimap.enabled": false,
+  "editor.renderWhitespace": "selection",
+  "editor.renderLineHighlight": "line",
+  "editor.scrollBeyondLastLine": false,
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+
+  "workbench.startupEditor": "none",
+  "workbench.editor.showTabs": "multiple",
+
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
+
+  "terminal.integrated.copyOnSelection": true,
+  "terminal.integrated.cursorStyle": "line",
+  "editor.fontFamily": "JetBrainsMono Nerd Font Mono, JetBrainsMono Nerd Font, Symbols Nerd Font Mono, monospace",
+  "terminal.integrated.fontFamily": "JetBrainsMono Nerd Font Mono, JetBrainsMono Nerd Font, Symbols Nerd Font Mono, monospace",
+  "terminal.integrated.boldFontWeight": "normal",
+  "terminal.integrated.drawBoldTextInBrightColors": false,
+
+  "vim.useSystemClipboard": true,
+  "vim.hlsearch": true,
+  "vim.incsearch": true,
+  "vim.smartRelativeLine": true,
+  "vim.leader": "<space>",
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["<leader>", "f", "f"],
+      "commands": ["workbench.action.quickOpen"]
+    },
+    {
+      "before": ["<leader>", "f", "s"],
+      "commands": ["workbench.action.files.save"]
+    },
+    {
+      "before": ["<leader>", "f", "t"],
+      "commands": ["workbench.action.terminal.toggleTerminal"]
+    },
+    {
+      "before": ["<leader>", "e"],
+      "commands": ["workbench.view.explorer"]
+    },
+    {
+      "before": ["<leader>", "w", "v"],
+      "commands": ["workbench.action.splitEditorRight"]
+    },
+    {
+      "before": ["<leader>", "w", "h"],
+      "commands": ["workbench.action.focusLeftGroup"]
+    },
+    {
+      "before": ["<leader>", "w", "l"],
+      "commands": ["workbench.action.focusRightGroup"]
+    },
+    {
+      "before": ["<leader>", "b", "d"],
+      "commands": ["workbench.action.closeActiveEditor"]
+    }
+  ],
+  "redhat.telemetry.enabled": true,
+  "workbench.editorAssociations": {
+    "*.docx": "default"
+  },
+  "security.workspace.trust.untrustedFiles": "open",
+  "workbench.colorTheme": "Tokyo Night Storm",
+  "workbench.statusBar.visible": false,
+  "workbench.activityBar.location": "hidden"
+}

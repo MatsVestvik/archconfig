@@ -1,0 +1,7 @@
+[
+    {
+        "key": "space e",
+        "command": "workbench.action.toggleSidebarVisibility",
+        "when": "!inputFocus"
+    }
+]

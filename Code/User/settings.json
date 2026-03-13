@@ -71,6 +71,5 @@
   },
   "security.workspace.trust.untrustedFiles": "open",
   "workbench.colorTheme": "Tokyo Night Storm",
-  "workbench.statusBar.visible": false,
   "workbench.activityBar.location": "hidden"
 }

@@ -71,5 +71,7 @@
   },
   "security.workspace.trust.untrustedFiles": "open",
   "workbench.colorTheme": "Tokyo Night Storm",
-  "workbench.activityBar.location": "hidden"
+  "java.configuration.runtimes": [
+    
+  ]
 }

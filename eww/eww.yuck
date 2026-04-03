@@ -16,6 +16,12 @@
 (defpoll audio_icon :interval "2s"
   "sh -c 'if wpctl get-volume @DEFAULT_AUDIO_SINK@ 2>/dev/null | grep -q MUTED; then echo \"󰖁\"; else echo \"󰕾\"; fi'")
 
+(defpoll battery_percent :interval "10s"
+  "sh -c 'cat /sys/class/power_supply/BAT1/capacity 2>/dev/null || echo 0'")
+
+(defpoll battery_status :interval "10s"
+  "sh -c 'cat /sys/class/power_supply/BAT1/status 2>/dev/null || echo Unknown'")
+
 
 (defvar pet_image_path "/home/mats/.config/eww/mudkip.png")
 
@@ -65,11 +71,24 @@
   :monitor 0
   :stacking "bg"
   :focusable false
-  :geometry (geometry :x "45px" :y "340px" :width "300px" :height "240px" :anchor "top right")
+  :geometry (geometry :x "45px" :y "340px" :width "300px" :height "300px" :anchor "top right")
   (ascii_display))
+
+(defwindow battery_widget
+  :monitor 0
+  :stacking "bg"
+  :focusable false
+  :geometry (geometry :x "45px" :y "650px" :width "300px" :height "84px" :anchor "top right")
+  (battery_display))
 
 (defwidget ascii_display []
   (box :class "ascii-container" :orientation "vertical" :hexpand true :vexpand true :halign "fill" :valign "fill"
     (box :orientation "vertical" :hexpand true :vexpand true :halign "fill" :valign "fill"
       (image :class "pet-image" :path pet_image_path :image-width 300 :image-height 300 :halign "center" :valign "center"))))
+
+(defwidget battery_display []
+  (box :class "battery-card" :orientation "vertical"
+    (label :class "battery-title" :text "Battery")
+    (label :class "battery-text" :text battery_status)
+    (progress :class "battery-bar" :value battery_percent :max 100)))
 

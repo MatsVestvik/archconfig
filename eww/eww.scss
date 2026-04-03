@@ -61,4 +61,42 @@
   color: #cdd6f4;
 }
 
+.battery-card {
+  background-color: rgba(17, 21, 34, 0.72);
+  border: 1px solid rgba(205, 214, 244, 0.14);
+  border-radius: 12px;
+  padding: 10px 12px;
+  color: #cdd6f4;
+}
+
+.battery-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: #a6adc8;
+  margin-bottom: 4px;
+}
+
+.battery-text {
+  font-size: 16px;
+  font-weight: 700;
+  color: #cdd6f4;
+  margin-bottom: 8px;
+}
+
+.battery-bar {
+  min-height: 12px;
+}
+
+.battery-bar trough {
+  background-color: rgba(9, 12, 23, 0.9);
+  border-radius: 999px;
+  min-height: 12px;
+}
+
+.battery-bar progress {
+  background-color: #89b4fa;
+  border-radius: 999px;
+  min-height: 12px;
+}
+
 

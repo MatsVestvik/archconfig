@@ -21,6 +21,9 @@
 !cava/
 !cava/*
 !cava/**/*
+!eww/
+!eww/*
+!eww/**/*
 
 # Track .gitignore
 !.gitignore

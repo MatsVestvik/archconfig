@@ -7,4 +7,7 @@ if ! command -v eww >/dev/null 2>&1; then
 fi
 
 eww daemon
-eww open clock_widget
+eww open time_widget
+eww open date_widget
+eww open week_widget
+eww open controls_icons_widget

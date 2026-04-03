@@ -1,0 +1,44 @@
+* {
+  all: unset;
+}
+
+.info-card {
+  background-color: rgba(17, 21, 34, 0.72);
+  border: 1px solid rgba(205, 214, 244, 0.14);
+  border-radius: 12px;
+  padding: 10px 12px;
+  color: #cdd6f4;
+}
+
+.info-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: #a6adc8;
+  margin-bottom: 4px;
+}
+
+.info-value {
+  font-size: 18px;
+  font-weight: 700;
+  color: #cdd6f4;
+}
+
+.icons-card {
+  background-color: rgba(17, 21, 34, 0.72);
+  border: 1px solid rgba(205, 214, 244, 0.14);
+  border-radius: 12px;
+  padding: 8px 10px;
+}
+
+.icon-btn {
+  min-width: 70px;
+  min-height: 40px;
+  border-radius: 10px;
+  background-color: rgba(9, 12, 23, 0.72);
+  margin-right: 8px;
+}
+
+.icon-glyph {
+  font-size: 20px;
+  color: #89b4fa;
+}

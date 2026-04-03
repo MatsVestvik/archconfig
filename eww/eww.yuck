@@ -16,57 +16,35 @@
 (defpoll audio_icon :interval "2s"
   "sh -c 'if wpctl get-volume @DEFAULT_AUDIO_SINK@ 2>/dev/null | grep -q MUTED; then echo \"󰖁\"; else echo \"󰕾\"; fi'")
 
-(defpoll ascii_art_user_poll :interval "10s"
-  "cat $HOME/.config/eww/ascii_art.txt")
 
 (defvar pet_image_path "/home/mats/.config/eww/mudkip.png")
-
-(defvar ascii_art_user "⠀⠀⠀⠀⢠⡶⠚⢷⣤⡀⠀⠀⠀⠀⠀⣲⡶⠛⠻⣆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⢠⡿⠁⠀⠀⠙⣷⣄⠀⢀⣴⡟⠁⠀⠀⢷⢹⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⣾⠃⠀⠠⠶⠚⠛⠛⠛⠛⠋⠀⠀⣀⡀⢸⠈⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⢸⣏⡔⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠚⠉⠉⣿⠀⢹⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⢾⠏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠸⠀⢸⡇⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⢠⣿⢠⣶⡆⠀⠀⠀⠀⣀⣀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡇⠀⠀⠀⠀⠀⠀⠀⠀
-⢒⡾⠁⠘⠟⠁⠀⠀⠀⠀⣿⣿⡆⠀⠀⠀⠀⠀⠀⠀⢸⡇⠀⠀⠀⠀⠀⠀⠀⠀
-⠉⣧⠀⠀⠀⠀⠃⠀⠀⠀⠈⠉⠠⣍⠀⠀⠀⠀⠀⠀⣸⡇⢀⣤⠶⠛⠛⠻⢦⣄
-⠀⠸⣧⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣰⡟⣴⠟⠁⠀⠀⠀⠀⠀⢻
-⠀⠀⠀⠛⣷⡦⠀⠀⠀⠀⠀⠀⠀⠀⣀⣀⣤⡴⠞⠋⢠⡟⠀⠀⠀⠀⠀⠀⢀⡾
-⠀⠀⠀⢰⡿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠳⣤⡀⢸⠃⠀⠀⠀⠀⢠⡶⠟⠁
-⠀⠀⠀⣸⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⢷⣹⡄⠀⠀⠀⠀⣼⠀⠀⠀
-⠀⠀⠀⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡀⠈⢿⣇⠀⠀⠀⠀⢹⡄⠀⠀
-⠀⠀⠀⢸⡀⢀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⣿⡄⠀⠀⠀⠈⣧⠀⠀
-⠀⠀⠀⢸⡇⠘⡇⠀⠀⠀⠀⠀⠀⠀⣀⠀⠀⠀⠀⠀⠀⢸⣿⠀⠀⠀⠀⢹⡇⠀
-⠀⠀⠀⢸⡇⠀⠙⠀⠀⠀⠀⠀⢠⠞⠁⠀⠀⠀⠀⠀⠀⠀⣿⠇⠀⠀⠀⢸⡇⠀
-⠀⠀⠀⢸⡇⠀⢸⡆⠀⠀⠀⠀⣟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠛⠀⠀⠀⠀⣸⠇⠀
-⠀⠀⠀⢸⣿⠀⠀⡇⠀⠀⠀⠀⣿⡀⠀⠀⠀⠀⠀⠀⠀⢀⡇⠀⠀⢀⣴⡟⠁⠀
-⠀⠀⠀⠘⠿⠶⢶⢧⣦⣦⡴⢾⣥⣽⣤⣤⣤⣤⣤⣤⡴⣯⡤⠴⠶⠛⠋⠀⠀⠀")
 
 (defwindow time_widget
   :monitor 0
   :stacking "bg"
   :focusable false
-  :geometry (geometry :x "45px" :y "30px" :width "260px" :height "68px" :anchor "top right")
+  :geometry (geometry :x "45px" :y "30px" :width "300px" :height "68px" :anchor "top right")
   (info_box :title "Time" :value time_text))
 
 (defwindow date_widget
   :monitor 0
   :stacking "bg"
   :focusable false
-  :geometry (geometry :x "45px" :y "108px" :width "260px" :height "68px" :anchor "top right")
+  :geometry (geometry :x "45px" :y "108px" :width "300px" :height "68px" :anchor "top right")
   (info_box :title "Date" :value date_text))
 
 (defwindow week_widget
   :monitor 0
   :stacking "bg"
   :focusable false
-  :geometry (geometry :x "45px" :y "186px" :width "260px" :height "68px" :anchor "top right")
+  :geometry (geometry :x "45px" :y "186px" :width "300px" :height "68px" :anchor "top right")
   (info_box :title "Week" :value week_text))
 
 (defwindow controls_icons_widget
   :monitor 0
   :stacking "bg"
   :focusable false
-  :geometry (geometry :x "45px" :y "264px" :width "260px" :height "58px" :anchor "top right")
+  :geometry (geometry :x "45px" :y "264px" :width "300px" :height "58px" :anchor "top right")
   (icons_controls))
 
 (defwidget info_box [title value]
@@ -87,10 +65,11 @@
   :monitor 0
   :stacking "bg"
   :focusable false
-  :geometry (geometry :x "45px" :y "340px" :width "260px" :height "240px" :anchor "top right")
+  :geometry (geometry :x "45px" :y "340px" :width "300px" :height "240px" :anchor "top right")
   (ascii_display))
 
 (defwidget ascii_display []
-  (box :class "ascii-container" :space-evenly false
-    (image :class "pet-image" :path pet_image_path :image-width 180 :image-height 180)))
+  (box :class "ascii-container" :orientation "vertical" :hexpand true :vexpand true :halign "fill" :valign "fill"
+    (box :orientation "vertical" :hexpand true :vexpand true :halign "fill" :valign "fill"
+      (image :class "pet-image" :path pet_image_path :image-width 300 :image-height 300 :halign "center" :valign "center"))))
 

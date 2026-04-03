@@ -4,41 +4,9 @@
     "position": "right",
     "height": "100%",
     "width": 34,
-    "modules-left": ["custom/hour-tens", "custom/hour-ones", "custom/colon", "custom/minute-tens", "custom/minute-ones"],
+    "modules-left": [],
     "modules-center": [],
-    "modules-right": [],
-
-    "custom/hour-tens": {
-      "exec": "date +'%H' | cut -c1",
-      "interval": 1,
-      "format": "{}"
-    },
-
-    "custom/hour-ones": {
-      "exec": "date +'%H' | cut -c2",
-      "interval": 1,
-      "format": "{}"
-    },
-
-    "custom/colon": {
-      "exec": "echo ':'",
-      "interval": 1,
-      "format": "{}"
-    },
-
-    "custom/minute-tens": {
-      "exec": "date +'%M' | cut -c1",
-      "interval": 1,
-      "format": "{}"
-    },
-
-    "custom/minute-ones": {
-      "exec": "date +'%M' | cut -c2",
-      "interval": 1,
-      "format": "{}"
-    }
-
-
+    "modules-right": []
   },
   {
     "layer": "top",
@@ -46,13 +14,7 @@
     "height": 20,
     "modules-left": [],
     "modules-center": ["hyprland/workspaces"],
-    "modules-right": ["clock"],
-
-    "clock": {
-      "interval": 60,
-      "format": "{:%d %b  W%V}",
-      "tooltip-format": "{:%A, %d %B %Y}"
-    },
+    "modules-right": [],
 
     "hyprland/workspaces": {
       "format": "{icon}",

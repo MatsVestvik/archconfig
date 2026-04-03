@@ -16,6 +16,11 @@
 (defpoll audio_icon :interval "2s"
   "sh -c 'if wpctl get-volume @DEFAULT_AUDIO_SINK@ 2>/dev/null | grep -q MUTED; then echo \"󰖁\"; else echo \"󰕾\"; fi'")
 
+(defpoll ascii_art_user_poll :interval "10s"
+  "cat $HOME/.config/eww/ascii_art.txt")
+
+(defvar pet_image_path "/home/mats/.config/eww/mudkip.png")
+
 (defvar ascii_art_user "⠀⠀⠀⠀⢠⡶⠚⢷⣤⡀⠀⠀⠀⠀⠀⣲⡶⠛⠻⣆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⢠⡿⠁⠀⠀⠙⣷⣄⠀⢀⣴⡟⠁⠀⠀⢷⢹⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⣾⠃⠀⠠⠶⠚⠛⠛⠛⠛⠋⠀⠀⣀⡀⢸⠈⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀
@@ -87,5 +92,5 @@
 
 (defwidget ascii_display []
   (box :class "ascii-container" :space-evenly false
-    (label :class "ascii-text" :wrap false :text ascii_art_user)))
+    (image :class "pet-image" :path pet_image_path :image-width 180 :image-height 180)))
 

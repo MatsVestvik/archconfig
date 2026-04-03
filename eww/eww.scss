@@ -44,10 +44,15 @@
 }
 
 .ascii-container {
-  background-color: rgba(17, 21, 34, 0.95);
-  border-radius: 8px;
-  padding: 12px;
+  background-color: rgba(17, 21, 34, 0.72);
+  border: 1px solid rgba(205, 214, 244, 0.14);
+  border-radius: 12px;
+  padding: 0;
   color: #cdd6f4;
+}
+
+.pet-image {
+  margin: 0;
 }
 
 .ascii-text {

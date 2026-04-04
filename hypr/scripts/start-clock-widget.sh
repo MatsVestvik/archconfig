@@ -19,3 +19,5 @@ open_widget time_widget
 open_widget date_widget
 open_widget week_widget
 open_widget controls_icons_widget
+open_widget ascii_widget
+open_widget battery_widget

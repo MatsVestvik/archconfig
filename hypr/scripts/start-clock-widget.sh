@@ -1,13 +1,21 @@
 #!/usr/bin/env sh
 
-set -eu
+set -u
 
 if ! command -v eww >/dev/null 2>&1; then
   exit 0
 fi
 
-eww daemon
-eww open time_widget
-eww open date_widget
-eww open week_widget
-eww open controls_icons_widget
+sleep 2
+
+eww daemon >/dev/null 2>&1 || true
+
+open_widget() {
+  widget_name="$1"
+  eww open "$widget_name" >/dev/null 2>&1 || true
+}
+
+open_widget time_widget
+open_widget date_widget
+open_widget week_widget
+open_widget controls_icons_widget

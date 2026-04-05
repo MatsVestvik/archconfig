@@ -24,6 +24,9 @@
 !eww/
 !eww/*
 !eww/**/*
+!btop/
+!btop/*
+!btop/**/*
 
 # Track .gitignore
 !.gitignore
@@ -35,3 +38,4 @@
 !wofi/**/*
 !nvim/**/*
 !kitty/**/*
+!btop/**/*

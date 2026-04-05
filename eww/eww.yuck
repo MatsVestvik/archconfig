@@ -13,7 +13,7 @@
 (defpoll bt_icon :interval "5s"
   "sh -c 'if bluetoothctl show 2>/dev/null | grep -q \"Powered: yes\"; then echo \"󰂯\"; else echo \"󰂲\"; fi'")
 
-(defpoll audio_icon :interval "2s"
+(defpoll audio_icon :interval "1s"
   "sh -c 'if wpctl get-volume @DEFAULT_AUDIO_SINK@ 2>/dev/null | grep -q MUTED; then echo \"󰖁\"; else echo \"󰕾\"; fi'")
 
 (defpoll spotify_play_icon :interval "1s"
@@ -26,25 +26,25 @@
 (defpoll volume_bar_class :interval "500ms"
   "sh -c 'if wpctl get-volume @DEFAULT_AUDIO_SINK@ 2>/dev/null | grep -q MUTED; then echo \"volume-bar muted\"; else vol=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ 2>/dev/null | sed -E \"s/.* ([0-9.]+)/\\1/\" | head -n1); case \"$vol\" in \"\"|*[!0-9.]* ) vol=0 ;; esac; pct=$(python3 -c \"import sys; print(int(float(sys.argv[1]) * 100))\" \"$vol\" 2>/dev/null || echo 0); if [ \"$pct\" -ge 80 ]; then echo \"volume-bar high\"; elif [ \"$pct\" -ge 50 ]; then echo \"volume-bar medium\"; elif [ \"$pct\" -ge 20 ]; then echo \"volume-bar low\"; else echo \"volume-bar critical\"; fi; fi'")
 
-(defpoll cpu_percent :interval "2s"
+(defpoll cpu_percent :interval "1s"
   "sh -c 'read -r _ u1 n1 s1 i1 io1 irq1 sirq1 st1 _ < /proc/stat; t1=$((u1+n1+s1+i1+io1+irq1+sirq1+st1)); id1=$((i1+io1)); sleep 0.2; read -r _ u2 n2 s2 i2 io2 irq2 sirq2 st2 _ < /proc/stat; t2=$((u2+n2+s2+i2+io2+irq2+sirq2+st2)); id2=$((i2+io2)); dt=$((t2-t1)); did=$((id2-id1)); if [ \"$dt\" -gt 0 ]; then echo $((100*(dt-did)/dt)); else echo 0; fi'")
 
-(defpoll cpu_bar_class :interval "2s"
+(defpoll cpu_bar_class :interval "1s"
   "sh -c 'read -r _ u1 n1 s1 i1 io1 irq1 sirq1 st1 _ < /proc/stat; t1=$((u1+n1+s1+i1+io1+irq1+sirq1+st1)); id1=$((i1+io1)); sleep 0.2; read -r _ u2 n2 s2 i2 io2 irq2 sirq2 st2 _ < /proc/stat; t2=$((u2+n2+s2+i2+io2+irq2+sirq2+st2)); id2=$((i2+io2)); dt=$((t2-t1)); did=$((id2-id1)); if [ \"$dt\" -gt 0 ]; then pct=$((100*(dt-did)/dt)); else pct=0; fi; if [ \"$pct\" -ge 85 ]; then echo \"cpu-bar critical\"; elif [ \"$pct\" -ge 60 ]; then echo \"cpu-bar high\"; elif [ \"$pct\" -ge 30 ]; then echo \"cpu-bar medium\"; else echo \"cpu-bar low\"; fi'")
 
-(defpoll brightness_percent :interval "2s"
+(defpoll brightness_percent :interval "1s"
   "sh -c 'dev=$(ls /sys/class/backlight 2>/dev/null | head -n1); if [ -n \"$dev\" ] && [ -r \"/sys/class/backlight/$dev/brightness\" ] && [ -r \"/sys/class/backlight/$dev/max_brightness\" ]; then cur=$(cat \"/sys/class/backlight/$dev/brightness\"); max=$(cat \"/sys/class/backlight/$dev/max_brightness\"); if [ \"$max\" -gt 0 ]; then echo $((100*cur/max)); else echo 0; fi; else brightnessctl -m 2>/dev/null | awk -F, \"{gsub(/%/,\\\"\\\",\\$4); print int(\\$4)}\" | head -n1 || echo 0; fi'")
 
-(defpoll brightness_bar_class :interval "2s"
+(defpoll brightness_bar_class :interval "1s"
   "sh -c 'dev=$(ls /sys/class/backlight 2>/dev/null | head -n1); if [ -n \"$dev\" ] && [ -r \"/sys/class/backlight/$dev/brightness\" ] && [ -r \"/sys/class/backlight/$dev/max_brightness\" ]; then cur=$(cat \"/sys/class/backlight/$dev/brightness\"); max=$(cat \"/sys/class/backlight/$dev/max_brightness\"); if [ \"$max\" -gt 0 ]; then pct=$((100*cur/max)); else pct=0; fi; else pct=$(brightnessctl -m 2>/dev/null | awk -F, \"{gsub(/%/,\\\"\\\",\\$4); print int(\\$4)}\" | head -n1); case \"$pct\" in \"\"|*[!0-9]*) pct=0 ;; esac; fi; if [ \"$pct\" -ge 70 ]; then echo \"brightness-bar high\"; elif [ \"$pct\" -ge 35 ]; then echo \"brightness-bar medium\"; elif [ \"$pct\" -ge 15 ]; then echo \"brightness-bar low\"; else echo \"brightness-bar critical\"; fi'")
 
-(defpoll battery_percent :interval "10s"
+(defpoll battery_percent :interval "5s"
   "sh -c 'cat /sys/class/power_supply/BAT1/capacity 2>/dev/null || echo 0'")
 
-(defpoll battery_bar_class :interval "10s"
+(defpoll battery_bar_class :interval "5s"
   "sh -c 'cap=$(cat /sys/class/power_supply/BAT1/capacity 2>/dev/null || echo 0); status=$(cat /sys/class/power_supply/BAT1/status 2>/dev/null || echo Unknown); case \"$cap\" in \"\"|*[!0-9]*) cap=0 ;; esac; if [ \"$status\" = \"Charging\" ]; then echo \"battery-bar charging\"; elif [ \"$status\" = \"Full\" ] || [ \"$cap\" -ge 100 ]; then echo \"battery-bar full\"; elif [ \"$cap\" -ge 60 ]; then echo \"battery-bar high\"; elif [ \"$cap\" -ge 30 ]; then echo \"battery-bar medium\"; elif [ \"$cap\" -ge 10 ]; then echo \"battery-bar low\"; else echo \"battery-bar critical\"; fi'")
 
-(defpoll battery_text :interval "10s"
+(defpoll battery_text :interval "5s"
   "sh -c 'cap=$(cat /sys/class/power_supply/BAT1/capacity 2>/dev/null || echo 0); status=$(cat /sys/class/power_supply/BAT1/status 2>/dev/null || echo Unknown); case \"$cap\" in \"\"|*[!0-9]*) cap=0 ;; esac; if [ \"$status\" = \"Charging\" ]; then icon=\"󰂄\"; elif [ \"$status\" = \"Full\" ]; then icon=\"󰁹\"; elif [ \"$status\" = \"Not charging\" ]; then icon=\"\"; else if [ \"$cap\" -ge 100 ]; then icon=\"󰁹\"; elif [ \"$cap\" -ge 90 ]; then icon=\"󰂂\"; elif [ \"$cap\" -ge 80 ]; then icon=\"󰂁\"; elif [ \"$cap\" -ge 70 ]; then icon=\"󰂀\"; elif [ \"$cap\" -ge 60 ]; then icon=\"󰁿\"; elif [ \"$cap\" -ge 50 ]; then icon=\"󰁾\"; elif [ \"$cap\" -ge 40 ]; then icon=\"󰁽\"; elif [ \"$cap\" -ge 30 ]; then icon=\"󰁼\"; elif [ \"$cap\" -ge 20 ]; then icon=\"󰁻\"; elif [ \"$cap\" -ge 10 ]; then icon=\"󰁺\"; else icon=\"󰂎\"; fi; fi; echo \"$icon $cap%\"'")
 
 (defwindow time_widget
@@ -113,7 +113,7 @@
   :monitor 0
   :stacking "bg"
   :focusable false
-  :geometry (geometry :x "45px" :y "330px" :width "300px" :height "710px" :anchor "top right")
+  :geometry (geometry :x "45px" :y "330px" :width "300px" :height "60%" :anchor "top right")
   (system_bars_display))
 
 (defwidget system_bars_display []

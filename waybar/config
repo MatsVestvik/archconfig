@@ -45,8 +45,8 @@
     "layer": "top",
     "position": "bottom",
     "height": 20,
-    "modules-left": [],
-    "modules-center": ["custom/battery_bar"],
+    "modules-left": ["custom/battery_bar"],
+    "modules-center": [],
     "modules-right": [],
 
     "custom/battery_bar": {

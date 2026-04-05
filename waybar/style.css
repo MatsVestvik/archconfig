@@ -100,6 +100,10 @@ window#waybar.bottom .modules-right {
   padding: 0 2px;
 }
 
+window#waybar.bottom #custom-battery_bar {
+  margin-left: 45px;
+}
+
 #custom-battery_bar.good {
   color: #9ece6a;
 }

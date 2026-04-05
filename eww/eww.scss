@@ -51,6 +51,21 @@
   color: #cdd6f4;
 }
 
+.meter-card {
+  background-color: rgba(17, 21, 34, 0.72);
+  border: 1px solid rgba(205, 214, 244, 0.14);
+  border-radius: 12px;
+  padding: 6px 10px;
+  color: #cdd6f4;
+}
+
+.meter-icon {
+  font-size: 14px;
+  color: #a6adc8;
+  min-width: 16px;
+  margin-right: 8px;
+}
+
 .battery-title {
   font-size: 12px;
   font-weight: 700;

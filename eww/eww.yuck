@@ -80,19 +80,23 @@
   :monitor 0
   :stacking "bg"
   :focusable false
-  :geometry (geometry :x "45px" :y "340px" :width "300px" :height "34px" :anchor "top right")
+  :geometry (geometry :x "45px" :y "340px" :width "300px" :height "40px" :anchor "top right")
   (battery_display))
 (defwindow volume_widget
   :monitor 0
   :stacking "bg"
   :focusable false
-  :geometry (geometry :x "45px" :y "384px" :width "300px" :height "34px" :anchor "top right")
+  :geometry (geometry :x "45px" :y "386px" :width "300px" :height "40px" :anchor "top right")
   (volume_display))
 
 (defwidget battery_display []
-  (box :class "battery-card" :orientation "vertical"
-    (progress :class battery_bar_class :value battery_percent :max 100)))
+  (box :class "meter-card" :orientation "vertical"
+    (box :class "meter-row" :orientation "h" :space-evenly false :hexpand true
+      (label :class "meter-icon" :text "󰁹")
+      (progress :class battery_bar_class :hexpand true :halign "fill" :value battery_percent :max 100))))
 (defwidget volume_display []
-  (box :class "battery-card" :orientation "vertical"
-    (progress :class volume_bar_class :value volume_percent :max 100)))
+  (box :class "meter-card" :orientation "vertical"
+    (box :class "meter-row" :orientation "h" :space-evenly false :hexpand true
+      (label :class "meter-icon" :text audio_icon)
+      (progress :class volume_bar_class :hexpand true :halign "fill" :value volume_percent :max 100))))
 

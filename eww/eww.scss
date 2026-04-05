@@ -182,4 +182,35 @@
   min-height: 12px;
 }
 
+.brightness-bar {
+  min-height: 12px;
+}
+
+.brightness-bar.high progress {
+  background-color: #a6e3a1;
+}
+
+.brightness-bar.medium progress {
+  background-color: #f9e2af;
+}
+
+.brightness-bar.low progress {
+  background-color: #fab387;
+}
+
+.brightness-bar.critical progress {
+  background-color: #f38ba8;
+}
+
+.brightness-bar trough {
+  background-color: rgba(9, 12, 23, 0.9);
+  border-radius: 999px;
+  min-height: 12px;
+}
+
+.brightness-bar progress {
+  border-radius: 999px;
+  min-height: 12px;
+}
+
 

@@ -22,3 +22,4 @@ open_widget controls_icons_widget
 open_widget battery_widget
 open_widget volume_widget
 open_widget cpu_widget
+open_widget brightness_widget

@@ -29,6 +29,12 @@
 (defpoll cpu_bar_class :interval "2s"
   "sh -c 'read -r _ u1 n1 s1 i1 io1 irq1 sirq1 st1 _ < /proc/stat; t1=$((u1+n1+s1+i1+io1+irq1+sirq1+st1)); id1=$((i1+io1)); sleep 0.2; read -r _ u2 n2 s2 i2 io2 irq2 sirq2 st2 _ < /proc/stat; t2=$((u2+n2+s2+i2+io2+irq2+sirq2+st2)); id2=$((i2+io2)); dt=$((t2-t1)); did=$((id2-id1)); if [ \"$dt\" -gt 0 ]; then pct=$((100*(dt-did)/dt)); else pct=0; fi; if [ \"$pct\" -ge 85 ]; then echo \"cpu-bar critical\"; elif [ \"$pct\" -ge 60 ]; then echo \"cpu-bar high\"; elif [ \"$pct\" -ge 30 ]; then echo \"cpu-bar medium\"; else echo \"cpu-bar low\"; fi'")
 
+(defpoll brightness_percent :interval "2s"
+  "sh -c 'dev=$(ls /sys/class/backlight 2>/dev/null | head -n1); if [ -n \"$dev\" ] && [ -r \"/sys/class/backlight/$dev/brightness\" ] && [ -r \"/sys/class/backlight/$dev/max_brightness\" ]; then cur=$(cat \"/sys/class/backlight/$dev/brightness\"); max=$(cat \"/sys/class/backlight/$dev/max_brightness\"); if [ \"$max\" -gt 0 ]; then echo $((100*cur/max)); else echo 0; fi; else brightnessctl -m 2>/dev/null | awk -F, \"{gsub(/%/,\\\"\\\",\\$4); print int(\\$4)}\" | head -n1 || echo 0; fi'")
+
+(defpoll brightness_bar_class :interval "2s"
+  "sh -c 'dev=$(ls /sys/class/backlight 2>/dev/null | head -n1); if [ -n \"$dev\" ] && [ -r \"/sys/class/backlight/$dev/brightness\" ] && [ -r \"/sys/class/backlight/$dev/max_brightness\" ]; then cur=$(cat \"/sys/class/backlight/$dev/brightness\"); max=$(cat \"/sys/class/backlight/$dev/max_brightness\"); if [ \"$max\" -gt 0 ]; then pct=$((100*cur/max)); else pct=0; fi; else pct=$(brightnessctl -m 2>/dev/null | awk -F, \"{gsub(/%/,\\\"\\\",\\$4); print int(\\$4)}\" | head -n1); case \"$pct\" in \"\"|*[!0-9]*) pct=0 ;; esac; fi; if [ \"$pct\" -ge 70 ]; then echo \"brightness-bar high\"; elif [ \"$pct\" -ge 35 ]; then echo \"brightness-bar medium\"; elif [ \"$pct\" -ge 15 ]; then echo \"brightness-bar low\"; else echo \"brightness-bar critical\"; fi'")
+
 (defpoll battery_percent :interval "10s"
   "sh -c 'cat /sys/class/power_supply/BAT1/capacity 2>/dev/null || echo 0'")
 
@@ -102,6 +108,13 @@
   :geometry (geometry :x "45px" :y "368px" :width "300px" :height "40px" :anchor "top right")
   (cpu_display))
 
+(defwindow brightness_widget
+  :monitor 0
+  :stacking "bg"
+  :focusable false
+  :geometry (geometry :x "45px" :y "392px" :width "300px" :height "40px" :anchor "top right")
+  (brightness_display))
+
 (defwidget battery_display []
   (box :class "meter-card" :orientation "vertical" :vexpand true :valign "center"
     (box :class "meter-row" :orientation "h" :space-evenly false :hexpand true :vexpand true :valign "center"
@@ -118,4 +131,10 @@
     (box :class "meter-row" :orientation "h" :space-evenly false :hexpand true :vexpand true :valign "center"
       (label :class "meter-icon" :text "󰍛")
       (progress :class cpu_bar_class :hexpand true :halign "fill" :valign "center" :value cpu_percent :max 100))))
+
+(defwidget brightness_display []
+  (box :class "meter-card" :orientation "vertical" :vexpand true :valign "center"
+    (box :class "meter-row" :orientation "h" :space-evenly false :hexpand true :vexpand true :valign "center"
+      (label :class "meter-icon" :text "󰃠")
+      (progress :class brightness_bar_class :hexpand true :halign "fill" :valign "center" :value brightness_percent :max 100))))
 

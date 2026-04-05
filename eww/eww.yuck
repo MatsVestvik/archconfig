@@ -63,7 +63,7 @@
       :onclick "networkmanager_dmenu"
       :onrightclick "alacritty -e nmtui"
       (label :class "icon-glyph" :text wifi_icon))
-    (button :class "icon-btn" :onclick "blueman-manager"
+    (button :class "icon-btn" :onclick "sh -c 'blueman-manager >/dev/null 2>&1 &'"
       (label :class "icon-glyph" :text bt_icon))
     (button :class "icon-btn"
       :onclick "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"

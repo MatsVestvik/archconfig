@@ -88,53 +88,26 @@
       :onclick "sh -c 'pavucontrol >/dev/null 2>&1 &'"
       (label :class "icon-glyph" :text audio_icon))))
 
-(defwindow battery_widget
+(defwindow system_bars_widget
   :monitor 0
   :stacking "bg"
   :focusable false
-  :geometry (geometry :x "45px" :y "320px" :width "300px" :height "40px" :anchor "top right")
-  (battery_display))
-(defwindow volume_widget
-  :monitor 0
-  :stacking "bg"
-  :focusable false
-  :geometry (geometry :x "45px" :y "344px" :width "300px" :height "40px" :anchor "top right")
-  (volume_display))
+  :geometry (geometry :x "45px" :y "330px" :width "300px" :height "260px" :anchor "top right")
+  (system_bars_display))
 
-(defwindow cpu_widget
-  :monitor 0
-  :stacking "bg"
-  :focusable false
-  :geometry (geometry :x "45px" :y "368px" :width "300px" :height "40px" :anchor "top right")
-  (cpu_display))
-
-(defwindow brightness_widget
-  :monitor 0
-  :stacking "bg"
-  :focusable false
-  :geometry (geometry :x "45px" :y "392px" :width "300px" :height "40px" :anchor "top right")
-  (brightness_display))
-
-(defwidget battery_display []
-  (box :class "meter-card" :orientation "vertical" :vexpand true :valign "center"
-    (box :class "meter-row" :orientation "h" :space-evenly false :hexpand true :vexpand true :valign "center"
-      (label :class "meter-icon" :text "󰁹")
-      (progress :class battery_bar_class :hexpand true :halign "fill" :valign "center" :value battery_percent :max 100))))
-(defwidget volume_display []
-  (box :class "meter-card" :orientation "vertical" :vexpand true :valign "center"
-    (box :class "meter-row" :orientation "h" :space-evenly false :hexpand true :vexpand true :valign "center"
-      (label :class "meter-icon" :text audio_icon)
-      (progress :class volume_bar_class :hexpand true :halign "fill" :valign "center" :value volume_percent :max 100))))
-
-(defwidget cpu_display []
-  (box :class "meter-card" :orientation "vertical" :vexpand true :valign "center"
-    (box :class "meter-row" :orientation "h" :space-evenly false :hexpand true :vexpand true :valign "center"
-      (label :class "meter-icon" :text "󰍛")
-      (progress :class cpu_bar_class :hexpand true :halign "fill" :valign "center" :value cpu_percent :max 100))))
-
-(defwidget brightness_display []
-  (box :class "meter-card" :orientation "vertical" :vexpand true :valign "center"
-    (box :class "meter-row" :orientation "h" :space-evenly false :hexpand true :vexpand true :valign "center"
-      (label :class "meter-icon" :text "󰃠")
-      (progress :class brightness_bar_class :hexpand true :halign "fill" :valign "center" :value brightness_percent :max 100))))
+(defwidget system_bars_display []
+  (box :class "meter-card" :orientation "vertical" :space-evenly false :vexpand true :valign "start"
+    (box :class "meter-stack" :orientation "h" :space-evenly true :valign "start" :hexpand true
+      (box :class "meter-column" :orientation "vertical" :space-evenly false :valign "start" :halign "center"
+        (label :class "meter-icon-center" :xalign 0.5 :vexpand false :valign "start" :text "󰁹")
+        (progress :class battery_bar_class :orientation "v" :halign "center" :vexpand false :valign "start" :value battery_percent :max 100))
+      (box :class "meter-column" :orientation "vertical" :space-evenly false :valign "start" :halign "center"
+        (label :class "meter-icon-center" :xalign 0.5 :vexpand false :valign "start" :text audio_icon)
+        (progress :class volume_bar_class :orientation "v" :halign "center" :vexpand false :valign "start" :value volume_percent :max 100))
+      (box :class "meter-column" :orientation "vertical" :space-evenly false :valign "start" :halign "center"
+        (label :class "meter-icon-center" :xalign 0.5 :vexpand false :valign "start" :text "󰍛")
+        (progress :class cpu_bar_class :orientation "v" :halign "center" :vexpand false :valign "start" :value cpu_percent :max 100))
+      (box :class "meter-column" :orientation "vertical" :space-evenly false :valign "start" :halign "center"
+        (label :class "meter-icon-center" :xalign 0.5 :vexpand false :valign "start" :text "󰃠")
+        (progress :class brightness_bar_class :orientation "v" :halign "center" :vexpand false :valign "start" :value brightness_percent :max 100)))))
 

@@ -55,8 +55,19 @@
   background-color: rgba(17, 21, 34, 0.72);
   border: 1px solid rgba(205, 214, 244, 0.14);
   border-radius: 12px;
-  padding: 0 10px;
+  padding: 6px 10px;
   color: #cdd6f4;
+}
+
+.meter-column {
+  min-width: 50px;
+  min-height: 0;
+}
+
+.meter-icon-center {
+  font-size: 15px;
+  color: #a6adc8;
+  margin-bottom: 1px;
 }
 
 .meter-icon {
@@ -81,7 +92,8 @@
 }
 
 .battery-bar {
-  min-height: 12px;
+  min-width: 16px;
+  min-height: 180px;
 }
 
 .battery-bar.charging progress {
@@ -108,16 +120,19 @@
 .battery-bar trough {
   background-color: rgba(9, 12, 23, 0.9);
   border-radius: 999px;
-  min-height: 12px;
+  min-width: 16px;
+  min-height: 180px;
 }
 
 .battery-bar progress {
   border-radius: 999px;
-  min-height: 12px;
+  min-width: 16px;
+  min-height: 0;
 }
 
 .volume-bar {
-  min-height: 12px;
+  min-width: 16px;
+  min-height: 180px;
 }
 
 .volume-bar.muted progress {
@@ -143,16 +158,19 @@
 .volume-bar trough {
   background-color: rgba(9, 12, 23, 0.9);
   border-radius: 999px;
-  min-height: 12px;
+  min-width: 16px;
+  min-height: 180px;
 }
 
 .volume-bar progress {
   border-radius: 999px;
-  min-height: 12px;
+  min-width: 16px;
+  min-height: 0;
 }
 
 .cpu-bar {
-  min-height: 12px;
+  min-width: 16px;
+  min-height: 180px;
 }
 
 .cpu-bar.low progress {
@@ -174,16 +192,19 @@
 .cpu-bar trough {
   background-color: rgba(9, 12, 23, 0.9);
   border-radius: 999px;
-  min-height: 12px;
+  min-width: 16px;
+  min-height: 180px;
 }
 
 .cpu-bar progress {
   border-radius: 999px;
-  min-height: 12px;
+  min-width: 16px;
+  min-height: 0;
 }
 
 .brightness-bar {
-  min-height: 12px;
+  min-width: 16px;
+  min-height: 180px;
 }
 
 .brightness-bar.high progress {
@@ -205,12 +226,14 @@
 .brightness-bar trough {
   background-color: rgba(9, 12, 23, 0.9);
   border-radius: 999px;
-  min-height: 12px;
+  min-width: 16px;
+  min-height: 180px;
 }
 
 .brightness-bar progress {
   border-radius: 999px;
-  min-height: 12px;
+  min-width: 16px;
+  min-height: 0;
 }
 
 

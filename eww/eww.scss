@@ -69,6 +69,27 @@
   min-height: 12px;
 }
 
+.battery-bar.charging progress {
+  background-color: #89b4fa;
+}
+
+.battery-bar.full progress,
+.battery-bar.high progress {
+  background-color: #a6e3a1;
+}
+
+.battery-bar.medium progress {
+  background-color: #f9e2af;
+}
+
+.battery-bar.low progress {
+  background-color: #fab387;
+}
+
+.battery-bar.critical progress {
+  background-color: #f38ba8;
+}
+
 .battery-bar trough {
   background-color: rgba(9, 12, 23, 0.9);
   border-radius: 999px;
@@ -76,7 +97,6 @@
 }
 
 .battery-bar progress {
-  background-color: #89b4fa;
   border-radius: 999px;
   min-height: 12px;
 }

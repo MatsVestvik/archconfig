@@ -51,35 +51,35 @@
   :monitor 0
   :stacking "bg"
   :focusable false
-  :geometry (geometry :x "45px" :y "30px" :width "300px" :height "68px" :anchor "top right")
+  :geometry (geometry :x "45px" :y "30px" :width "300px" :height "68px" :anchor "top left")
   (info_box :value time_text))
 
 (defwindow date_widget
   :monitor 0
   :stacking "bg"
   :focusable false
-  :geometry (geometry :x "45px" :y "108px" :width "300px" :height "68px" :anchor "top right")
+  :geometry (geometry :x "45px" :y "108px" :width "300px" :height "68px" :anchor "top left")
   (info_box :value date_text))
 
 (defwindow week_widget
   :monitor 0
   :stacking "bg"
   :focusable false
-  :geometry (geometry :x "45px" :y "186px" :width "300px" :height "68px" :anchor "top right")
+  :geometry (geometry :x "45px" :y "186px" :width "300px" :height "68px" :anchor "top left")
   (info_box :value week_text))
 
 (defwindow controls_icons_widget
   :monitor 0
   :stacking "bg"
   :focusable false
-  :geometry (geometry :x "45px" :y "264px" :width "300px" :height "58px" :anchor "top right")
+  :geometry (geometry :x "45px" :y "264px" :width "300px" :height "58px" :anchor "top left")
   (icons_controls))
 
 (defwindow spotify_controls_widget
   :monitor 0
   :stacking "bg"
   :focusable false
-  :geometry (geometry :x "45px" :y "30px" :width "300px" :height "58px" :anchor "bottom right")
+  :geometry (geometry :x "45px" :y "30px" :width "300px" :height "58px" :anchor "bottom left")
   (spotify_controls))
 
 (defwidget info_box [value]
@@ -113,7 +113,7 @@
   :monitor 0
   :stacking "bg"
   :focusable false
-  :geometry (geometry :x "45px" :y "330px" :width "300px" :height "60%" :anchor "top right")
+  :geometry (geometry :x "45px" :y "330px" :width "300px" :height "60%" :anchor "top left")
   (system_bars_display))
 
 (defwidget system_bars_display []

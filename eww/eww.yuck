@@ -74,11 +74,10 @@
   :monitor 0
   :stacking "bg"
   :focusable false
-  :geometry (geometry :x "45px" :y "340px" :width "300px" :height "84px" :anchor "top right")
+  :geometry (geometry :x "45px" :y "340px" :width "300px" :height "34px" :anchor "top right")
   (battery_display))
 
 (defwidget battery_display []
   (box :class "battery-card" :orientation "vertical"
-    (label :class "battery-text" :text battery_text)
     (progress :class battery_bar_class :value battery_percent :max 100)))
 

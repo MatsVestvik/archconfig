@@ -19,8 +19,8 @@
 (defpoll battery_percent :interval "10s"
   "sh -c 'cat /sys/class/power_supply/BAT1/capacity 2>/dev/null || echo 0'")
 
-(defpoll battery_status :interval "10s"
-  "sh -c 'cat /sys/class/power_supply/BAT1/status 2>/dev/null || echo Unknown'")
+(defpoll battery_text :interval "10s"
+  "sh -c 'cap=$(cat /sys/class/power_supply/BAT1/capacity 2>/dev/null || echo 0); status=$(cat /sys/class/power_supply/BAT1/status 2>/dev/null || echo Unknown); case \"$cap\" in \"\"|*[!0-9]*) cap=0 ;; esac; if [ \"$status\" = \"Charging\" ]; then icon=\"󰂄\"; elif [ \"$status\" = \"Full\" ]; then icon=\"󰁹\"; elif [ \"$status\" = \"Not charging\" ]; then icon=\"\"; else if [ \"$cap\" -ge 100 ]; then icon=\"󰁹\"; elif [ \"$cap\" -ge 90 ]; then icon=\"󰂂\"; elif [ \"$cap\" -ge 80 ]; then icon=\"󰂁\"; elif [ \"$cap\" -ge 70 ]; then icon=\"󰂀\"; elif [ \"$cap\" -ge 60 ]; then icon=\"󰁿\"; elif [ \"$cap\" -ge 50 ]; then icon=\"󰁾\"; elif [ \"$cap\" -ge 40 ]; then icon=\"󰁽\"; elif [ \"$cap\" -ge 30 ]; then icon=\"󰁼\"; elif [ \"$cap\" -ge 20 ]; then icon=\"󰁻\"; elif [ \"$cap\" -ge 10 ]; then icon=\"󰁺\"; else icon=\"󰂎\"; fi; fi; echo \"$icon $cap%\"'")
 
 (defwindow time_widget
   :monitor 0
@@ -78,6 +78,6 @@
 (defwidget battery_display []
   (box :class "battery-card" :orientation "vertical"
     (label :class "battery-title" :text "Battery")
-    (label :class "battery-text" :text battery_status)
+    (label :class "battery-text" :text battery_text)
     (progress :class "battery-bar" :value battery_percent :max 100)))
 

@@ -27,21 +27,21 @@
   :stacking "bg"
   :focusable false
   :geometry (geometry :x "45px" :y "30px" :width "300px" :height "68px" :anchor "top right")
-  (info_box :title "" :value time_text))
+  (info_box :value time_text))
 
 (defwindow date_widget
   :monitor 0
   :stacking "bg"
   :focusable false
   :geometry (geometry :x "45px" :y "108px" :width "300px" :height "68px" :anchor "top right")
-  (info_box :title "" :value date_text))
+  (info_box :value date_text))
 
 (defwindow week_widget
   :monitor 0
   :stacking "bg"
   :focusable false
   :geometry (geometry :x "45px" :y "186px" :width "300px" :height "68px" :anchor "top right")
-  (info_box :title "" :value week_text))
+  (info_box :value week_text))
 
 (defwindow controls_icons_widget
   :monitor 0
@@ -50,9 +50,8 @@
   :geometry (geometry :x "45px" :y "264px" :width "300px" :height "58px" :anchor "top right")
   (icons_controls))
 
-(defwidget info_box [title value]
+(defwidget info_box [value]
   (box :class "info-card" :orientation "vertical"
-    (label :class "info-title" :text title)
     (label :class "info-value" :text value)))
 
 (defwidget icons_controls []

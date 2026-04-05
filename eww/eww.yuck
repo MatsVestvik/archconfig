@@ -15,6 +15,9 @@
 
 (defpoll audio_icon :interval "2s"
   "sh -c 'if wpctl get-volume @DEFAULT_AUDIO_SINK@ 2>/dev/null | grep -q MUTED; then echo \"󰖁\"; else echo \"󰕾\"; fi'")
+
+(defpoll spotify_play_icon :interval "1s"
+  "sh -c 'if playerctl --player=spotify status 2>/dev/null | grep -q Playing; then echo \"󰏤\"; else echo \"󰐊\"; fi'")
 (defpoll volume_percent :interval "500ms"
   "sh -c 'vol=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ 2>/dev/null | sed -E \"s/.* ([0-9.]+)/\\1/\" | head -n1); case \"$vol\" in \"\"|*[!0-9.]* ) vol=0 ;; esac; python3 -c \"import sys; print(int(float(sys.argv[1]) * 100))\" \"$vol\" 2>/dev/null || echo 0'")
 
@@ -72,6 +75,13 @@
   :geometry (geometry :x "45px" :y "264px" :width "300px" :height "58px" :anchor "top right")
   (icons_controls))
 
+(defwindow spotify_controls_widget
+  :monitor 0
+  :stacking "bg"
+  :focusable false
+  :geometry (geometry :x "45px" :y "30px" :width "300px" :height "58px" :anchor "bottom right")
+  (spotify_controls))
+
 (defwidget info_box [value]
   (box :class "info-card" :orientation "vertical"
     (label :class "info-value" :text value)))
@@ -87,27 +97,38 @@
     (button :class "icon-btn"
       :onclick "sh -c 'pavucontrol >/dev/null 2>&1 &'"
       (label :class "icon-glyph" :text audio_icon))))
+(defwidget spotify_controls []
+  (box :class "icons-card"
+    (button :class "icon-btn"
+      :onclick "sh -c 'playerctl --player=spotify previous >/dev/null 2>&1 &'"
+      (label :class "icon-glyph" :text "󰒮"))
+    (button :class "icon-btn"
+      :onclick "sh -c 'playerctl --player=spotify play-pause >/dev/null 2>&1 || spotify >/dev/null 2>&1 &'"
+      (label :class "icon-glyph" :text spotify_play_icon))
+    (button :class "icon-btn"
+      :onclick "sh -c 'playerctl --player=spotify next >/dev/null 2>&1 &'"
+      (label :class "icon-glyph" :text "󰒭"))))
 
 (defwindow system_bars_widget
   :monitor 0
   :stacking "bg"
   :focusable false
-  :geometry (geometry :x "45px" :y "330px" :width "300px" :height "260px" :anchor "top right")
+  :geometry (geometry :x "45px" :y "330px" :width "300px" :height "710px" :anchor "top right")
   (system_bars_display))
 
 (defwidget system_bars_display []
-  (box :class "meter-card" :orientation "vertical" :space-evenly false :vexpand true :valign "start"
-    (box :class "meter-stack" :orientation "h" :space-evenly true :valign "start" :hexpand true
-      (box :class "meter-column" :orientation "vertical" :space-evenly false :valign "start" :halign "center"
-        (progress :class battery_bar_class :orientation "v" :flipped true :halign "center" :vexpand false :valign "start" :value battery_percent :max 100)
-        (label :class "meter-icon-center" :xalign 0.5 :vexpand false :valign "start" :text "󰁹"))
-      (box :class "meter-column" :orientation "vertical" :space-evenly false :valign "start" :halign "center"
-        (progress :class volume_bar_class :orientation "v" :flipped true :halign "center" :vexpand false :valign "start" :value volume_percent :max 100)
-        (label :class "meter-icon-center" :xalign 0.5 :vexpand false :valign "start" :text audio_icon))
-      (box :class "meter-column" :orientation "vertical" :space-evenly false :valign "start" :halign "center"
-        (progress :class cpu_bar_class :orientation "v" :flipped true :halign "center" :vexpand false :valign "start" :value cpu_percent :max 100)
-        (label :class "meter-icon-center" :xalign 0.5 :vexpand false :valign "start" :text "󰍛"))
-      (box :class "meter-column" :orientation "vertical" :space-evenly false :valign "start" :halign "center"
-        (progress :class brightness_bar_class :orientation "v" :flipped true :halign "center" :vexpand false :valign "start" :value brightness_percent :max 100)
-        (label :class "meter-icon-center" :xalign 0.5 :vexpand false :valign "start" :text "󰃠")))))
+  (box :class "meter-card" :orientation "vertical" :space-evenly false :vexpand true :valign "fill"
+    (box :class "meter-stack" :orientation "h" :space-evenly true :valign "fill" :hexpand true :vexpand true
+      (box :class "meter-column" :orientation "vertical" :space-evenly false :valign "fill" :halign "center" :vexpand true
+        (progress :class battery_bar_class :orientation "v" :flipped true :halign "center" :vexpand true :valign "fill" :value battery_percent :max 100)
+        (label :class "meter-icon-center" :xalign 0.5 :vexpand false :valign "end" :text "󰁹"))
+      (box :class "meter-column" :orientation "vertical" :space-evenly false :valign "fill" :halign "center" :vexpand true
+        (progress :class volume_bar_class :orientation "v" :flipped true :halign "center" :vexpand true :valign "fill" :value volume_percent :max 100)
+        (label :class "meter-icon-center" :xalign 0.5 :vexpand false :valign "end" :text audio_icon))
+      (box :class "meter-column" :orientation "vertical" :space-evenly false :valign "fill" :halign "center" :vexpand true
+        (progress :class cpu_bar_class :orientation "v" :flipped true :halign "center" :vexpand true :valign "fill" :value cpu_percent :max 100)
+        (label :class "meter-icon-center" :xalign 0.5 :vexpand false :valign "end" :text "󰍛"))
+      (box :class "meter-column" :orientation "vertical" :space-evenly false :valign "fill" :halign "center" :vexpand true
+        (progress :class brightness_bar_class :orientation "v" :flipped true :halign "center" :vexpand true :valign "fill" :value brightness_percent :max 100)
+        (label :class "meter-icon-center" :xalign 0.5 :vexpand false :valign "end" :text "󰃠")))))
 

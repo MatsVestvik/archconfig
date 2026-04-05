@@ -19,4 +19,5 @@ open_widget time_widget
 open_widget date_widget
 open_widget week_widget
 open_widget controls_icons_widget
+open_widget spotify_controls_widget
 open_widget system_bars_widget

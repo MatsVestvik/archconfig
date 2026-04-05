@@ -101,4 +101,39 @@
   min-height: 12px;
 }
 
+.volume-bar {
+  min-height: 12px;
+}
+
+.volume-bar.muted progress {
+  background-color: #6c7086;
+}
+
+.volume-bar.high progress {
+  background-color: #a6e3a1;
+}
+
+.volume-bar.medium progress {
+  background-color: #f9e2af;
+}
+
+.volume-bar.low progress {
+  background-color: #fab387;
+}
+
+.volume-bar.critical progress {
+  background-color: #f38ba8;
+}
+
+.volume-bar trough {
+  background-color: rgba(9, 12, 23, 0.9);
+  border-radius: 999px;
+  min-height: 12px;
+}
+
+.volume-bar progress {
+  border-radius: 999px;
+  min-height: 12px;
+}
+
 

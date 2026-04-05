@@ -15,6 +15,13 @@
 
 (defpoll audio_icon :interval "2s"
   "sh -c 'if wpctl get-volume @DEFAULT_AUDIO_SINK@ 2>/dev/null | grep -q MUTED; then echo \"󰖁\"; else echo \"󰕾\"; fi'")
+(defpoll volume_percent :interval "2s"
+  "sh -c 'vol=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ 2>/dev/null | sed -E \"s/.* ([0-9.]+)/\\1/\" | head -n1); case \"$vol\" in \"\"|*[!0-9.]* ) vol=0 ;; esac; python3 -c \"import sys; print(int(float(sys.argv[1]) * 100))\" \"$vol\" 2>/dev/null || echo 0'")
+
+(defpoll volume_percent_text :interval "2s"
+  "sh -c 'vol=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ 2>/dev/null | sed -E \"s/.* ([0-9.]+)/\\1/\" | head -n1); case \"$vol\" in \"\"|*[!0-9.]* ) vol=0 ;; esac; pct=$(python3 -c \"import sys; print(int(float(sys.argv[1]) * 100))\" \"$vol\" 2>/dev/null || echo 0); echo \"$pct%\"'")
+(defpoll volume_bar_class :interval "2s"
+  "sh -c 'if wpctl get-volume @DEFAULT_AUDIO_SINK@ 2>/dev/null | grep -q MUTED; then echo \"volume-bar muted\"; else vol=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ 2>/dev/null | sed -E \"s/.* ([0-9.]+)/\\1/\" | head -n1); case \"$vol\" in \"\"|*[!0-9.]* ) vol=0 ;; esac; pct=$(python3 -c \"import sys; print(int(float(sys.argv[1]) * 100))\" \"$vol\" 2>/dev/null || echo 0); if [ \"$pct\" -ge 80 ]; then echo \"volume-bar high\"; elif [ \"$pct\" -ge 50 ]; then echo \"volume-bar medium\"; elif [ \"$pct\" -ge 20 ]; then echo \"volume-bar low\"; else echo \"volume-bar critical\"; fi; fi'")
 
 (defpoll battery_percent :interval "10s"
   "sh -c 'cat /sys/class/power_supply/BAT1/capacity 2>/dev/null || echo 0'")
@@ -75,8 +82,18 @@
   :focusable false
   :geometry (geometry :x "45px" :y "340px" :width "300px" :height "34px" :anchor "top right")
   (battery_display))
+(defwindow volume_widget
+  :monitor 0
+  :stacking "bg"
+  :focusable false
+  :geometry (geometry :x "45px" :y "384px" :width "300px" :height "34px" :anchor "top right")
+  (volume_display))
 
 (defwidget battery_display []
   (box :class "battery-card" :orientation "vertical"
     (progress :class battery_bar_class :value battery_percent :max 100)))
+(defwidget volume_display []
+  (box :class "battery-card" :orientation "vertical"
+    (label :class "battery-text" :text volume_percent_text)
+    (progress :class volume_bar_class :value volume_percent :max 100)))
 

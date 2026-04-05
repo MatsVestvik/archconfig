@@ -45,9 +45,9 @@
     "layer": "top",
     "position": "bottom",
     "height": 20,
-    "modules-left": ["bluetooth", "network", "pulseaudio"],
+    "modules-left": [],
     "modules-center": ["battery"],
-    "modules-right": ["cpu"],
+    "modules-right": [],
 
     "battery": {
       "states": {
@@ -63,39 +63,6 @@
       "interval": 10
     },
 
-    "pulseaudio": {
-      "format": "{icon}",
-      "format-muted": "󰖁",
-      "format-icons": {
-        "default": ["󰕿", "󰖀", "󰕾"]
-      },
-      "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
-      "on-click-right": "pavucontrol",
-      "scroll-step": 1,
-      "tooltip": false
-    },
 
-    "network": {
-      "format": "{ifname}",
-      "format-wifi": "󰖩 ",
-      "format-ethernet": "󰈀 ",
-      "format-disconnected": "󰖪 ",
-      "tooltip-format": "{ifname} via {gwaddr} ({ipaddr}/{cidr})\\n{essid} ({signalStrength}%)",
-      "on-click": "networkmanager_dmenu",
-      "on-click-right": "alacritty -e nmtui"
-    },
-
-    "bluetooth": {
-      "format-disabled": "󰂲",
-      "format-on": "󰂯",
-      "format-connected": "󰂯",
-      "format-off": "󰂲",
-      "on-click": "blueman-manager"
-    },
-
-    "cpu": {
-      "format": "󰍛 {usage}%",
-      "interval": 2
-    }
   }
 ]

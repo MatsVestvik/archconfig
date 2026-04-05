@@ -151,4 +151,35 @@
   min-height: 12px;
 }
 
+.cpu-bar {
+  min-height: 12px;
+}
+
+.cpu-bar.low progress {
+  background-color: #a6e3a1;
+}
+
+.cpu-bar.medium progress {
+  background-color: #f9e2af;
+}
+
+.cpu-bar.high progress {
+  background-color: #fab387;
+}
+
+.cpu-bar.critical progress {
+  background-color: #f38ba8;
+}
+
+.cpu-bar trough {
+  background-color: rgba(9, 12, 23, 0.9);
+  border-radius: 999px;
+  min-height: 12px;
+}
+
+.cpu-bar progress {
+  border-radius: 999px;
+  min-height: 12px;
+}
+
 

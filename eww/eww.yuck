@@ -22,9 +22,6 @@
 (defpoll battery_status :interval "10s"
   "sh -c 'cat /sys/class/power_supply/BAT1/status 2>/dev/null || echo Unknown'")
 
-
-(defvar pet_image_path "/home/mats/.config/eww/mudkip.png")
-
 (defwindow time_widget
   :monitor 0
   :stacking "bg"
@@ -60,19 +57,16 @@
 
 (defwidget icons_controls []
   (box :class "icons-card"
-    (button :class "icon-btn" :onclick "sh -c 'if [ \"$(nmcli -t -f WIFI g 2>/dev/null)\" = \"enabled\" ]; then nmcli radio wifi off; else nmcli radio wifi on; fi'"
+    (button :class "icon-btn"
+      :onclick "networkmanager_dmenu"
+      :onrightclick "alacritty -e nmtui"
       (label :class "icon-glyph" :text wifi_icon))
-    (button :class "icon-btn" :onclick "sh -c 'if bluetoothctl show 2>/dev/null | grep -q \"Powered: yes\"; then bluetoothctl power off; else bluetoothctl power on; fi'"
+    (button :class "icon-btn" :onclick "blueman-manager"
       (label :class "icon-glyph" :text bt_icon))
-    (button :class "icon-btn" :onclick "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+    (button :class "icon-btn"
+      :onclick "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+      :onrightclick "pavucontrol"
       (label :class "icon-glyph" :text audio_icon))))
-
-(defwindow ascii_widget
-  :monitor 0
-  :stacking "bg"
-  :focusable false
-  :geometry (geometry :x "45px" :y "340px" :width "300px" :height "300px" :anchor "top right")
-  (ascii_display))
 
 (defwindow battery_widget
   :monitor 0
@@ -80,11 +74,6 @@
   :focusable false
   :geometry (geometry :x "45px" :y "650px" :width "300px" :height "84px" :anchor "top right")
   (battery_display))
-
-(defwidget ascii_display []
-  (box :class "ascii-container" :orientation "vertical" :hexpand true :vexpand true :halign "fill" :valign "fill"
-    (box :orientation "vertical" :hexpand true :vexpand true :halign "fill" :valign "fill"
-      (image :class "pet-image" :path pet_image_path :image-width 300 :image-height 300 :halign "center" :valign "center"))))
 
 (defwidget battery_display []
   (box :class "battery-card" :orientation "vertical"

@@ -66,8 +66,7 @@
     (button :class "icon-btn" :onclick "sh -c 'blueman-manager >/dev/null 2>&1 &'"
       (label :class "icon-glyph" :text bt_icon))
     (button :class "icon-btn"
-      :onclick "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
-      :onrightclick "pavucontrol"
+      :onclick "sh -c 'pavucontrol >/dev/null 2>&1 &'"
       (label :class "icon-glyph" :text audio_icon))))
 
 (defwindow battery_widget

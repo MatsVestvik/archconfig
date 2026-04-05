@@ -100,14 +100,14 @@
     (box :class "meter-stack" :orientation "h" :space-evenly true :valign "start" :hexpand true
       (box :class "meter-column" :orientation "vertical" :space-evenly false :valign "start" :halign "center"
         (label :class "meter-icon-center" :xalign 0.5 :vexpand false :valign "start" :text "󰁹")
-        (progress :class battery_bar_class :orientation "v" :halign "center" :vexpand false :valign "start" :value battery_percent :max 100))
+        (progress :class battery_bar_class :orientation "v" :flipped true :halign "center" :vexpand false :valign "start" :value battery_percent :max 100))
       (box :class "meter-column" :orientation "vertical" :space-evenly false :valign "start" :halign "center"
         (label :class "meter-icon-center" :xalign 0.5 :vexpand false :valign "start" :text audio_icon)
-        (progress :class volume_bar_class :orientation "v" :halign "center" :vexpand false :valign "start" :value volume_percent :max 100))
+        (progress :class volume_bar_class :orientation "v" :flipped true :halign "center" :vexpand false :valign "start" :value volume_percent :max 100))
       (box :class "meter-column" :orientation "vertical" :space-evenly false :valign "start" :halign "center"
         (label :class "meter-icon-center" :xalign 0.5 :vexpand false :valign "start" :text "󰍛")
-        (progress :class cpu_bar_class :orientation "v" :halign "center" :vexpand false :valign "start" :value cpu_percent :max 100))
+        (progress :class cpu_bar_class :orientation "v" :flipped true :halign "center" :vexpand false :valign "start" :value cpu_percent :max 100))
       (box :class "meter-column" :orientation "vertical" :space-evenly false :valign "start" :halign "center"
         (label :class "meter-icon-center" :xalign 0.5 :vexpand false :valign "start" :text "󰃠")
-        (progress :class brightness_bar_class :orientation "v" :halign "center" :vexpand false :valign "start" :value brightness_percent :max 100)))))
+        (progress :class brightness_bar_class :orientation "v" :flipped true :halign "center" :vexpand false :valign "start" :value brightness_percent :max 100)))))
 

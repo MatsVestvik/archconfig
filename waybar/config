@@ -46,22 +46,15 @@
     "position": "bottom",
     "height": 20,
     "modules-left": [],
-    "modules-center": ["battery"],
+    "modules-center": ["custom/battery_bar"],
     "modules-right": [],
 
-    "battery": {
-      "states": {
-        "good": 80,
-        "warning": 30,
-        "critical": 15
-      },
-      "format": "{icon} {capacity}%",
-      "format-charging": "󰂄 {capacity}%",
-      "format-plugged": " {capacity}%",
-      "format-full": "󰁹 100%",
-      "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
-      "interval": 10
-    },
+    "custom/battery_bar": {
+      "exec": "~/.config/waybar/scripts/battery_bar.sh",
+      "interval": 5,
+      "return-type": "json",
+      "tooltip": false
+    }
 
 
   }

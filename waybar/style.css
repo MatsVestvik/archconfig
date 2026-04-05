@@ -92,25 +92,25 @@ window#waybar.bottom .modules-right {
   padding-bottom: 0;
 }
 
-#battery {
+#custom-battery_bar {
   font-size: 15px;
   color: #c0caf5;
 }
 
-#battery.good {
+#custom-battery_bar.good {
   color: #9ece6a;
 }
 
-#battery.warning {
+#custom-battery_bar.warning {
   color: #e0af68;
 }
 
-#battery.critical {
+#custom-battery_bar.critical {
   color: #f7768e;
 }
 
-#battery.charging,
-#battery.plugged {
+#custom-battery_bar.charging,
+#custom-battery_bar.plugged {
   color: #7dcfff;
 }
 

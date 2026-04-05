@@ -94,6 +94,5 @@
     (progress :class battery_bar_class :value battery_percent :max 100)))
 (defwidget volume_display []
   (box :class "battery-card" :orientation "vertical"
-    (label :class "battery-text" :text volume_percent_text)
     (progress :class volume_bar_class :value volume_percent :max 100)))
 

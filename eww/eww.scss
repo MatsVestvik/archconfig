@@ -92,7 +92,7 @@
 }
 
 .battery-bar {
-  min-width: 16px;
+  min-width: 24px;
   min-height: 180px;
 }
 
@@ -120,18 +120,18 @@
 .battery-bar trough {
   background-color: rgba(9, 12, 23, 0.9);
   border-radius: 999px;
-  min-width: 16px;
+  min-width: 24px;
   min-height: 180px;
 }
 
 .battery-bar progress {
   border-radius: 999px;
-  min-width: 16px;
+  min-width: 24px;
   min-height: 0;
 }
 
 .volume-bar {
-  min-width: 16px;
+  min-width: 24px;
   min-height: 180px;
 }
 
@@ -158,18 +158,18 @@
 .volume-bar trough {
   background-color: rgba(9, 12, 23, 0.9);
   border-radius: 999px;
-  min-width: 16px;
+  min-width: 24px;
   min-height: 180px;
 }
 
 .volume-bar progress {
   border-radius: 999px;
-  min-width: 16px;
+  min-width: 24px;
   min-height: 0;
 }
 
 .cpu-bar {
-  min-width: 16px;
+  min-width: 24px;
   min-height: 180px;
 }
 
@@ -192,18 +192,18 @@
 .cpu-bar trough {
   background-color: rgba(9, 12, 23, 0.9);
   border-radius: 999px;
-  min-width: 16px;
+  min-width: 24px;
   min-height: 180px;
 }
 
 .cpu-bar progress {
   border-radius: 999px;
-  min-width: 16px;
+  min-width: 24px;
   min-height: 0;
 }
 
 .brightness-bar {
-  min-width: 16px;
+  min-width: 24px;
   min-height: 180px;
 }
 
@@ -226,13 +226,13 @@
 .brightness-bar trough {
   background-color: rgba(9, 12, 23, 0.9);
   border-radius: 999px;
-  min-width: 16px;
+  min-width: 24px;
   min-height: 180px;
 }
 
 .brightness-bar progress {
   border-radius: 999px;
-  min-width: 16px;
+  min-width: 24px;
   min-height: 0;
 }
 

@@ -16,7 +16,7 @@ case "$capacity" in
   ""|*[!0-9]*) capacity=0 ;;
 esac
 
-bar_len=16
+bar_len=24
 filled=$((capacity * bar_len / 100))
 if ((filled < 0)); then filled=0; fi
 if ((filled > bar_len)); then filled=$bar_len; fi
@@ -42,5 +42,6 @@ else
   class="critical"
 fi
 
-text="$icon ${filled_bar}${empty_bar} ${capacity}%"
+pct=$(printf "%3d" "$capacity")
+text="$icon [${filled_bar}${empty_bar}] ${pct}%"
 printf '{"text":"%s","class":"%s"}\n' "$text" "$class"

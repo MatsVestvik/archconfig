@@ -93,8 +93,11 @@ window#waybar.bottom .modules-right {
 }
 
 #custom-battery_bar {
-  font-size: 15px;
+  font-size: 14px;
   color: #c0caf5;
+  font-weight: 600;
+  min-width: 250px;
+  padding: 0 2px;
 }
 
 #custom-battery_bar.good {

@@ -77,7 +77,6 @@
 
 (defwidget battery_display []
   (box :class "battery-card" :orientation "vertical"
-    (label :class "battery-title" :text "Battery")
     (label :class "battery-text" :text battery_text)
     (progress :class "battery-bar" :value battery_percent :max 100)))
 

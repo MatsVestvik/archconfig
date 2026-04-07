@@ -147,5 +147,15 @@ window#waybar.bottom #custom-battery_bar {
   padding: 0px;
 }
 
+#custom-wifi,
+#custom-bluetooth,
+#custom-volume {
+  margin: 0 10px;
+}
+
+#spacer {
+  min-width: 10px;
+}
+
 
 

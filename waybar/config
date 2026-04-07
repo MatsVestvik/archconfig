@@ -14,7 +14,7 @@
     "height": 20,
     "modules-left": [],
     "modules-center": ["hyprland/workspaces"],
-    "modules-right": ["custom/battery_bar"],
+    "modules-right": ["custom/wifi", "spacer", "custom/bluetooth", "spacer", "custom/volume", "spacer", "custom/battery_bar"],
 
     "hyprland/workspaces": {
       "format": "{icon}",
@@ -37,6 +37,36 @@
       "interval": 5,
       "return-type": "json",
       "tooltip": false
+    },
+
+    "custom/wifi": {
+      "exec": "sh -c 'if [ \"$(nmcli -t -f WIFI g 2>/dev/null)\" = \"enabled\" ]; then echo \"{\\\"text\\\": \\\"󰖩\\\", \\\"class\\\": \\\"connected\\\"}\"; else echo \"{\\\"text\\\": \\\"󰖪\\\", \\\"class\\\": \\\"disconnected\\\"}\"; fi'",
+      "on-click": "networkmanager_dmenu",
+      "on-right-click": "alacritty -e nmtui",
+      "interval": 5,
+      "return-type": "json",
+      "tooltip": false
+    },
+
+    "custom/bluetooth": {
+      "exec": "sh -c 'if bluetoothctl show 2>/dev/null | grep -q \"Powered: yes\"; then echo \"{\\\"text\\\": \\\"󰂯\\\", \\\"class\\\": \\\"connected\\\"}\"; else echo \"{\\\"text\\\": \\\"󰂲\\\", \\\"class\\\": \\\"disconnected\\\"}\"; fi'",
+      "on-click": "sh -c 'blueman-manager >/dev/null 2>&1 &'",
+      "interval": 5,
+      "return-type": "json",
+      "tooltip": false
+    },
+
+    "custom/volume": {
+      "exec": "sh -c 'if wpctl get-volume @DEFAULT_AUDIO_SINK@ 2>/dev/null | grep -q MUTED; then echo \"{\\\"text\\\": \\\"󰖁\\\", \\\"class\\\": \\\"muted\\\"}\"; else echo \"{\\\"text\\\": \\\"󰕾\\\", \\\"class\\\": \\\"unmuted\\\"}\"; fi'",
+      "on-click": "sh -c 'pavucontrol >/dev/null 2>&1 &'",
+      "interval": 1,
+      "return-type": "json",
+      "tooltip": false
+    },
+
+    "spacer": {
+      "format": "",
+      "min-width": 50
     }
   },
   {

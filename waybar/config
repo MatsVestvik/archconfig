@@ -12,9 +12,9 @@
     "layer": "top",
     "position": "top",
     "height": 20,
-    "modules-left": [],
-    "modules-center": ["hyprland/workspaces"],
-    "modules-right": ["custom/wifi", "custom/separator", "custom/bluetooth", "custom/separator", "custom/volume_bar", "custom/separator", "custom/battery_bar"],
+    "modules-left": ["hyprland/workspaces"],
+    "modules-center": [],
+    "modules-right": ["custom/separator", "custom/wifi", "custom/separator", "custom/bluetooth", "custom/separator", "custom/volume_bar", "custom/separator", "custom/battery_bar", "custom/separator"],
 
     "hyprland/workspaces": {
       "format": "{icon}",

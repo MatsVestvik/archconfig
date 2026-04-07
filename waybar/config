@@ -14,7 +14,7 @@
     "height": 20,
     "modules-left": [],
     "modules-center": ["hyprland/workspaces"],
-    "modules-right": [],
+    "modules-right": ["custom/battery_bar"],
 
     "hyprland/workspaces": {
       "format": "{icon}",
@@ -30,6 +30,13 @@
       "persistent-workspaces": {
         "*": [1, 2, 3, 4, 5]
       }
+    },
+
+    "custom/battery_bar": {
+      "exec": "~/.config/waybar/scripts/battery_bar.sh",
+      "interval": 5,
+      "return-type": "json",
+      "tooltip": false
     }
   },
   {
@@ -45,17 +52,8 @@
     "layer": "top",
     "position": "bottom",
     "height": 20,
-    "modules-left": ["custom/battery_bar"],
+    "modules-left": [],
     "modules-center": [],
-    "modules-right": [],
-
-    "custom/battery_bar": {
-      "exec": "~/.config/waybar/scripts/battery_bar.sh",
-      "interval": 5,
-      "return-type": "json",
-      "tooltip": false
-    }
-
-
+    "modules-right": []
   }
 ]

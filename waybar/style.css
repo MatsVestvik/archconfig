@@ -178,8 +178,9 @@ window#waybar.bottom #custom-battery_bar {
   margin: 0 10px;
 }
 
-#spacer {
-  min-width: 10px;
+#custom-separator {
+  color: #7aa2f7;
+  margin: 0 8px;
 }
 
 

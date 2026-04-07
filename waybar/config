@@ -14,7 +14,7 @@
     "height": 20,
     "modules-left": [],
     "modules-center": ["hyprland/workspaces"],
-    "modules-right": ["custom/wifi", "spacer", "custom/bluetooth", "spacer", "custom/volume", "spacer", "custom/battery_bar"],
+    "modules-right": ["custom/wifi", "spacer", "custom/bluetooth", "spacer", "custom/volume", "custom/volume_bar", "spacer", "custom/battery_bar"],
 
     "hyprland/workspaces": {
       "format": "{icon}",
@@ -59,6 +59,13 @@
     "custom/volume": {
       "exec": "sh -c 'if wpctl get-volume @DEFAULT_AUDIO_SINK@ 2>/dev/null | grep -q MUTED; then echo \"{\\\"text\\\": \\\"󰖁\\\", \\\"class\\\": \\\"muted\\\"}\"; else echo \"{\\\"text\\\": \\\"󰕾\\\", \\\"class\\\": \\\"unmuted\\\"}\"; fi'",
       "on-click": "sh -c 'pavucontrol >/dev/null 2>&1 &'",
+      "interval": 1,
+      "return-type": "json",
+      "tooltip": false
+    },
+
+    "custom/volume_bar": {
+      "exec": "~/.config/waybar/scripts/volume_bar.sh",
       "interval": 1,
       "return-type": "json",
       "tooltip": false

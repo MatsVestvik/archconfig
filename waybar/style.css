@@ -100,6 +100,31 @@ window#waybar.bottom .modules-right {
   padding: 0 2px;
 }
 
+#custom-volume_bar {
+  font-size: 14px;
+  color: #c0caf5;
+  font-weight: 600;
+  min-width: 220px;
+  padding: 0 2px;
+}
+
+#custom-volume_bar.high {
+  color: #9ece6a;
+}
+
+#custom-volume_bar.medium {
+  color: #e0af68;
+}
+
+#custom-volume_bar.low,
+#custom-volume_bar.critical {
+  color: #f7768e;
+}
+
+#custom-volume_bar.muted {
+  color: #7dcfff;
+}
+
 window#waybar.bottom #custom-battery_bar {
   margin-left: 45px;
 }

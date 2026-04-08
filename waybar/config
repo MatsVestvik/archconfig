@@ -13,8 +13,13 @@
     "position": "top",
     "height": 20,
     "modules-left": ["hyprland/workspaces"],
-    "modules-center": [],
+    "modules-center": ["clock"],
     "modules-right": ["custom/separator", "custom/wifi", "custom/separator", "custom/bluetooth", "custom/separator", "custom/volume_bar", "custom/separator", "custom/battery_bar", "custom/separator"],
+
+    "clock": {
+      "format": "{:%H:%M}",
+      "tooltip-format": "{:%A, %d %B %Y | %H:%M:%S}"
+    },
 
     "hyprland/workspaces": {
       "format": "{icon}",

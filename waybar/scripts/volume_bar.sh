@@ -37,6 +37,5 @@ else
 	class="critical"
 fi
 
-pct_str=$(printf "%3d" "$pct")
-text="$icon [${filled_bar}${empty_bar}] ${pct_str}%"
+text="$icon [${filled_bar}${empty_bar}]"
 printf '{"text":"%s","class":"%s"}\n' "$text" "$class"

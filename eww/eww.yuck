@@ -43,7 +43,7 @@
   :monitor 0
   :stacking "bg"
   :focusable false
-  :geometry (geometry :x "45px" :y "264px" :width "300px" :height "58px" :anchor "top left")
+  :geometry (geometry :x "45px" :y "80px" :width "300px" :height "58px" :anchor "bottom left")
   (icons_controls))
 
 (defwindow spotify_controls_widget

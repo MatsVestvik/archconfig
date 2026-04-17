@@ -14,7 +14,20 @@
     "height": 20,
     "modules-left": ["hyprland/workspaces", "clock"],
     "modules-center": [],
-    "modules-right": ["custom/separator", "custom/wifi", "custom/separator", "custom/bluetooth", "custom/separator", "custom/volume_bar", "custom/separator", "custom/battery_bar", "custom/separator"],
+    "modules-right": ["custom/separator", "custom/wifi", "custom/separator", "custom/bluetooth", "custom/separator", "custom/volume_bar", "custom/separator", "custom/brightness_bar", "custom/separator", "custom/battery_bar", "custom/separator"],
+    "custom/brightness_bar": {
+      "exec": "~/.config/waybar/scripts/brightness_bar.sh",
+      "interval": 1,
+      "return-type": "json",
+      "format": "{text}",
+      "max": 100,
+      "bar-width": 120,
+      "bar-symbol": "󰃠 ",
+      "bar-alt-symbol": "󰃞 ",
+      "bar-empty": "─",
+      "bar-filled": "━",
+      "tooltip": false
+    },
 
     "clock": {
       "format": "[󰥔 {:%a %d %b %H:%M | W%V}]",

@@ -2,6 +2,18 @@
 
 set -u
 
+make_bar() {
+    local pct=$1
+    local width=24  # Number of bar segments
+    local filled=$((pct * width / 100))
+    local empty=$((width - filled))
+    local bar="["
+    for ((i=0; i<filled; i++)); do bar+="━"; done
+    for ((i=0; i<empty; i++)); do bar+="─"; done
+    bar+="]"
+    echo "$bar"
+}
+
 BAT_PATH="/sys/class/power_supply/BAT1"
 
 if [[ -d "$BAT_PATH" ]]; then
@@ -16,14 +28,7 @@ case "$capacity" in
   ""|*[!0-9]*) capacity=0 ;;
 esac
 
-bar_len=24
-filled=$((capacity * bar_len / 100))
-if ((filled < 0)); then filled=0; fi
-if ((filled > bar_len)); then filled=$bar_len; fi
-empty=$((bar_len - filled))
-
-filled_bar=$(printf '%*s' "$filled" '' | tr ' ' '=')
-empty_bar=$(printf '%*s' "$empty" '' | tr ' ' '-')
+bar=$(make_bar $capacity)
 
 if [[ "$status" == "Charging" ]]; then
   icon="󰂄"
@@ -42,5 +47,5 @@ else
   class="critical"
 fi
 
-text="$icon [${filled_bar}${empty_bar}]"
+text="$icon $bar"
 printf '{"text":"%s","class":"%s"}\n' "$text" "$class"

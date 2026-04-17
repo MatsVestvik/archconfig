@@ -17,8 +17,8 @@
     "modules-right": ["custom/separator", "custom/wifi", "custom/separator", "custom/bluetooth", "custom/separator", "custom/volume_bar", "custom/separator", "custom/battery_bar", "custom/separator"],
 
     "clock": {
-      "format": "[󰥔 {:%a %d %b %H:%M}]",
-      "tooltip-format": "{:%A, %d %B %Y | %H:%M:%S}"
+      "format": "[󰥔 {:%a %d %b %H:%M | W%V}]",
+      "tooltip-format": "{:%A, %d %B %Y | %H:%M:%S | Week %V}"
     },
 
     "hyprland/workspaces": {

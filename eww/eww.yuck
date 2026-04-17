@@ -80,26 +80,4 @@
       :onclick "sh -c 'playerctl --player=spotify next >/dev/null 2>&1 &'"
       (label :class "icon-glyph" :text "󰒭"))))
 
-(defwindow system_bars_widget
-  :monitor 0
-  :stacking "bg"
-  :focusable false
-  :geometry (geometry :x "45px" :y "330px" :width "300px" :height "60%" :anchor "top left")
-  (system_bars_display))
-
-(defwidget system_bars_display []
-  (box :class "meter-card" :orientation "vertical" :space-evenly false :vexpand true :valign "fill"
-    (box :class "meter-stack" :orientation "h" :space-evenly true :valign "fill" :hexpand true :vexpand true
-      (box :class "meter-column" :orientation "vertical" :space-evenly false :valign "fill" :halign "center" :vexpand true
-        (progress :class battery_bar_class :orientation "v" :flipped true :halign "center" :vexpand true :valign "fill" :value battery_percent :max 100)
-        (label :class "meter-icon-center" :xalign 0.5 :vexpand false :valign "end" :text "󰁹"))
-      (box :class "meter-column" :orientation "vertical" :space-evenly false :valign "fill" :halign "center" :vexpand true
-        (progress :class volume_bar_class :orientation "v" :flipped true :halign "center" :vexpand true :valign "fill" :value volume_percent :max 100)
-        (label :class "meter-icon-center" :xalign 0.5 :vexpand false :valign "end" :text audio_icon))
-      (box :class "meter-column" :orientation "vertical" :space-evenly false :valign "fill" :halign "center" :vexpand true
-        (progress :class cpu_bar_class :orientation "v" :flipped true :halign "center" :vexpand true :valign "fill" :value cpu_percent :max 100)
-        (label :class "meter-icon-center" :xalign 0.5 :vexpand false :valign "end" :text "󰍛"))
-      (box :class "meter-column" :orientation "vertical" :space-evenly false :valign "fill" :halign "center" :vexpand true
-        (progress :class brightness_bar_class :orientation "v" :flipped true :halign "center" :vexpand true :valign "fill" :value brightness_percent :max 100)
-        (label :class "meter-icon-center" :xalign 0.5 :vexpand false :valign "end" :text "󰃠")))))
 

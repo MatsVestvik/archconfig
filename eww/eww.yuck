@@ -1,12 +1,3 @@
-(defpoll time_text :interval "1s"
-  "date +'%H:%M:%S'")
-
-(defpoll date_text :interval "30s"
-  "date +'%A, %d %B %Y'")
-
-(defpoll week_text :interval "60s"
-  "date +'Week %V'")
-
 (defpoll wifi_icon :interval "5s"
   "sh -c 'if [ \"$(nmcli -t -f WIFI g 2>/dev/null)\" = \"enabled\" ]; then echo \"󰖩\"; else echo \"󰖪\"; fi'")
 
@@ -47,26 +38,6 @@
 (defpoll battery_text :interval "5s"
   "sh -c 'cap=$(cat /sys/class/power_supply/BAT1/capacity 2>/dev/null || echo 0); status=$(cat /sys/class/power_supply/BAT1/status 2>/dev/null || echo Unknown); case \"$cap\" in \"\"|*[!0-9]*) cap=0 ;; esac; if [ \"$status\" = \"Charging\" ]; then icon=\"󰂄\"; elif [ \"$status\" = \"Full\" ]; then icon=\"󰁹\"; elif [ \"$status\" = \"Not charging\" ]; then icon=\"\"; else if [ \"$cap\" -ge 100 ]; then icon=\"󰁹\"; elif [ \"$cap\" -ge 90 ]; then icon=\"󰂂\"; elif [ \"$cap\" -ge 80 ]; then icon=\"󰂁\"; elif [ \"$cap\" -ge 70 ]; then icon=\"󰂀\"; elif [ \"$cap\" -ge 60 ]; then icon=\"󰁿\"; elif [ \"$cap\" -ge 50 ]; then icon=\"󰁾\"; elif [ \"$cap\" -ge 40 ]; then icon=\"󰁽\"; elif [ \"$cap\" -ge 30 ]; then icon=\"󰁼\"; elif [ \"$cap\" -ge 20 ]; then icon=\"󰁻\"; elif [ \"$cap\" -ge 10 ]; then icon=\"󰁺\"; else icon=\"󰂎\"; fi; fi; echo \"$icon $cap%\"'")
 
-(defwindow time_widget
-  :monitor 0
-  :stacking "bg"
-  :focusable false
-  :geometry (geometry :x "45px" :y "30px" :width "300px" :height "68px" :anchor "top left")
-  (info_box :value time_text))
-
-(defwindow date_widget
-  :monitor 0
-  :stacking "bg"
-  :focusable false
-  :geometry (geometry :x "45px" :y "108px" :width "300px" :height "68px" :anchor "top left")
-  (info_box :value date_text))
-
-(defwindow week_widget
-  :monitor 0
-  :stacking "bg"
-  :focusable false
-  :geometry (geometry :x "45px" :y "186px" :width "300px" :height "68px" :anchor "top left")
-  (info_box :value week_text))
 
 (defwindow controls_icons_widget
   :monitor 0

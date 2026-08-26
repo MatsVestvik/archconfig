@@ -60,10 +60,11 @@
 (defwidget icons_controls []
   (box :class "icons-card"
     (button :class "icon-btn"
-      :onclick "networkmanager_dmenu"
-      :onrightclick "alacritty -e nmtui"
+      :onclick "~/.config/waybar/scripts/wifi-menu.sh"
+      :onrightclick "nm-connection-editor"
       (label :class "icon-glyph" :text wifi_icon))
-    (button :class "icon-btn" :onclick "sh -c 'blueman-manager >/dev/null 2>&1 &'"
+    (button :class "icon-btn" :onclick "~/.config/waybar/scripts/bluetooth-menu.sh"
+      :onrightclick "blueman-manager"
       (label :class "icon-glyph" :text bt_icon))
     (button :class "icon-btn"
       :onclick "sh -c 'pavucontrol >/dev/null 2>&1 &'"

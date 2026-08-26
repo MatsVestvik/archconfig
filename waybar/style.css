@@ -212,5 +212,15 @@ window#waybar.bottom #custom-battery_bar {
   margin: 0 8px;
 }
 
+#custom-power {
+  margin: 0 10px;
+  color: #f7768e;
+}
+
+#custom-power:hover {
+  color: #ff9e64;
+}
+
+
 
 

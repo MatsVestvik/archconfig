@@ -27,6 +27,9 @@
 !btop/
 !btop/*
 !btop/**/*
+!rofi/
+!rofi/*
+!rofi/**/*
 
 # Track .gitignore
 !.gitignore
@@ -39,3 +42,4 @@
 !nvim/**/*
 !kitty/**/*
 !btop/**/*
+!rofi/**/*

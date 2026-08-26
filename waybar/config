@@ -9,24 +9,21 @@
     "modules-right": []
   },
   {
+    "output": "eDP-1",
     "layer": "top",
     "position": "top",
     "height": 20,
     "modules-left": ["hyprland/workspaces", "clock"],
     "modules-center": [],
-    "modules-right": ["custom/separator", "custom/wifi", "custom/separator", "custom/bluetooth", "custom/separator", "custom/volume_bar", "custom/separator", "custom/brightness_bar", "custom/separator", "custom/battery_bar", "custom/separator"],
+    "modules-right": ["custom/separator", "custom/wifi", "custom/separator", "custom/bluetooth", "custom/separator", "custom/volume_bar", "custom/separator", "custom/brightness_bar", "custom/separator", "custom/battery_bar", "custom/separator", "custom/power", "custom/separator"],
     "custom/brightness_bar": {
-      "exec": "~/.config/waybar/scripts/brightness_bar.sh",
+      "exec": "~/.config/waybar/scripts/brightness_control.sh internal status",
+      "on-scroll-up": "~/.config/waybar/scripts/brightness_control.sh internal up",
+      "on-scroll-down": "~/.config/waybar/scripts/brightness_control.sh internal down",
       "interval": 1,
       "return-type": "json",
       "format": "{text}",
-      "max": 100,
-      "bar-width": 120,
-      "bar-symbol": "󰃠 ",
-      "bar-alt-symbol": "󰃞 ",
-      "bar-empty": "─",
-      "bar-filled": "━",
-      "tooltip": false
+      "tooltip": true
     },
 
     "clock": {
@@ -46,7 +43,7 @@
         "5": "󰭕"
       },
       "persistent-workspaces": {
-        "*": [1, 2, 3, 4, 5]
+        "eDP-1": [1, 2, 3, 4]
       }
     },
 
@@ -58,20 +55,21 @@
     },
 
     "custom/wifi": {
-      "exec": "sh -c 'if [ \"$(nmcli -t -f WIFI g 2>/dev/null)\" = \"enabled\" ]; then echo \"{\\\"text\\\": \\\"󰖩\\\", \\\"class\\\": \\\"connected\\\"}\"; else echo \"{\\\"text\\\": \\\"󰖪\\\", \\\"class\\\": \\\"disconnected\\\"}\"; fi'",
-      "on-click": "networkmanager_dmenu",
-      "on-right-click": "alacritty -e nmtui",
+      "exec": "~/.config/waybar/scripts/wifi_status.sh",
+      "on-click": "~/.config/waybar/scripts/wifi-menu.sh",
+      "on-right-click": "nm-connection-editor",
       "interval": 5,
       "return-type": "json",
-      "tooltip": false
+      "tooltip": true
     },
 
     "custom/bluetooth": {
-      "exec": "sh -c 'if bluetoothctl show 2>/dev/null | grep -q \"Powered: yes\"; then echo \"{\\\"text\\\": \\\"󰂯\\\", \\\"class\\\": \\\"connected\\\"}\"; else echo \"{\\\"text\\\": \\\"󰂲\\\", \\\"class\\\": \\\"disconnected\\\"}\"; fi'",
-      "on-click": "sh -c 'blueman-manager >/dev/null 2>&1 &'",
+      "exec": "~/.config/waybar/scripts/bluetooth_status.sh",
+      "on-click": "~/.config/waybar/scripts/bluetooth-menu.sh",
+      "on-right-click": "blueman-manager",
       "interval": 5,
       "return-type": "json",
-      "tooltip": false
+      "tooltip": true
     },
 
     "custom/volume_bar": {
@@ -87,9 +85,40 @@
       "tooltip": false
     },
 
+    "custom/power": {
+      "format": "󰐥",
+      "on-click": "~/.config/waybar/scripts/power-menu.sh",
+      "tooltip": true,
+      "tooltip-format": "Power Menu\nLeft-click: Lock, Sleep, Log Off, Reboot, Turn Off"
+    },
+
     "spacer": {
       "format": "",
       "min-width": 50
+    }
+  },
+  {
+    "output": "!eDP-1",
+    "layer": "top",
+    "position": "top",
+    "height": 20,
+    "modules-left": ["hyprland/workspaces"],
+    "modules-center": [],
+    "modules-right": [],
+    "hyprland/workspaces": {
+      "format": "{icon}",
+      "format-icons": {
+        "default": "󰄰",
+        "active": "",
+        "1": "",
+        "2": "󱁍",
+        "3": "󱡝",
+        "4": "",
+        "5": "󰭕"
+      },
+      "persistent-workspaces": {
+        "*": [5]
+      }
     }
   },
   {

@@ -3,12 +3,12 @@
 
 make_bar() {
     local pct=$1
-    local width=20  # Number of bar segments
+    local width=10  # Number of bar segments
     local filled=$((pct * width / 100))
     local empty=$((width - filled))
     local bar="["
-    for ((i=0; i<filled; i++)); do bar+="━"; done
-    for ((i=0; i<empty; i++)); do bar+="─"; done
+    for ((i=0; i<filled; i++)); do bar+="█"; done
+    for ((i=0; i<empty; i++)); do bar+="░"; done
     bar+="]"
     echo "$bar"
 }
@@ -24,7 +24,7 @@ if [ -d /sys/class/backlight ]; then
         else
             pct=0
         fi
-        bar=$(make_bar $pct)
+        bar=$(make_bar "$pct")
         echo "{\"percentage\": $pct, \"text\": \"󰃠 $bar\"}"
         exit 0
     fi
@@ -32,9 +32,9 @@ fi
 # Fallback to brightnessctl
 if command -v brightnessctl >/dev/null 2>&1; then
     pct=$(brightnessctl -m | awk -F, '{gsub(/%/,"",$4); print int($4)}' | head -n1)
-    bar=$(make_bar $pct)
+    bar=$(make_bar "$pct")
     echo "{\"percentage\": $pct, \"text\": \"󰃠 $bar\"}"
     exit 0
 fi
-echo '{"percentage": 0, "text": "󰃠 [?-------------------]"}'
+echo '{\"percentage\": 0, \"text\": \"󰃠 [░░░░░░░░░░]\"}'
 exit 1

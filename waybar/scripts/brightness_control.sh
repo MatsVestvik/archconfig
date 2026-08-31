@@ -10,12 +10,12 @@ ACTION="${2:-status}"
 # Helper function to generate visual bar
 make_bar() {
     local pct=$1
-    local width=15
+    local width=10  # Number of bar segments
     local filled=$((pct * width / 100))
     local empty=$((width - filled))
     local bar="["
-    for ((i=0; i<filled; i++)); do bar+="━"; done
-    for ((i=0; i<empty; i++)); do bar+="─"; done
+    for ((i=0; i<filled; i++)); do bar+="█"; done
+    for ((i=0; i<empty; i++)); do bar+="░"; done
     bar+="]"
     echo "$bar"
 }

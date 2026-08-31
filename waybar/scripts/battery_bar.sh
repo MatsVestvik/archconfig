@@ -4,12 +4,12 @@ set -u
 
 make_bar() {
     local pct=$1
-    local width=24  # Number of bar segments
+    local width=10  # Number of bar segments
     local filled=$((pct * width / 100))
     local empty=$((width - filled))
     local bar="["
-    for ((i=0; i<filled; i++)); do bar+="━"; done
-    for ((i=0; i<empty; i++)); do bar+="─"; done
+    for ((i=0; i<filled; i++)); do bar+="█"; done
+    for ((i=0; i<empty; i++)); do bar+="░"; done
     bar+="]"
     echo "$bar"
 }
@@ -28,7 +28,7 @@ case "$capacity" in
   ""|*[!0-9]*) capacity=0 ;;
 esac
 
-bar=$(make_bar $capacity)
+bar=$(make_bar "$capacity")
 
 if [[ "$status" == "Charging" ]]; then
   icon="󰂄"
@@ -48,4 +48,5 @@ else
 fi
 
 text="$icon $bar"
-printf '{"text":"%s","class":"%s"}\n' "$text" "$class"
+tooltip="Battery: $capacity% ($status)"
+printf '{"text":"%s","class":"%s","percentage":%d,"tooltip":"%s"}\n' "$text" "$class" "$capacity" "$tooltip"

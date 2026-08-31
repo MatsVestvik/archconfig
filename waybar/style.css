@@ -3,7 +3,7 @@
   font-size: 14px;
   color: #7dcfff;
   font-weight: 600;
-  min-width: 120px;
+  min-width: 115px;
   padding: 0 2px;
 }
 
@@ -121,7 +121,7 @@ window#waybar.bottom .modules-right {
   font-size: 14px;
   color: #c0caf5;
   font-weight: 600;
-  min-width: 250px;
+  min-width: 115px;
   padding: 0 2px;
 }
 
@@ -129,7 +129,7 @@ window#waybar.bottom .modules-right {
   font-size: 14px;
   color: #c0caf5;
   font-weight: 600;
-  min-width: 220px;
+  min-width: 115px;
   padding: 0 2px;
 }
 

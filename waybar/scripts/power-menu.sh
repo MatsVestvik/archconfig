@@ -30,7 +30,7 @@ case "$CHOICE" in
         ;;
     *"Log Off"*)
         if [ "$XDG_CURRENT_DESKTOP" = "Hyprland" ]; then
-            hyprctl dispatch exit
+            hyprctl dispatch 'hl.dsp.exit()' 2>/dev/null || hyprctl dispatch exit 2>/dev/null || loginctl terminate-session self
         elif [ -n "$I3SOCK" ]; then
             i3-msg exit
         else

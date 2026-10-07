@@ -13,7 +13,7 @@ require("monitors")
 local terminal = "kitty"
 local fileManager = "kitty -e yazi"
 local menu = "rofi -show drun"
-local fileSearch = [[sh -c 'if command -v fd >/dev/null 2>&1; then list="$(fd . "$HOME" --hidden --follow --exclude .git --exclude node_modules --exclude .cache 2>/dev/null)"; else list="$(find "$HOME" -mindepth 1 \( -path "*/.git/*" -o -path "*/node_modules/*" -o -path "*/.cache/*" \) -prune -o -print 2>/dev/null)"; fi; chosen="$(printf "%s\n" "$list" | rofi -dmenu -p "Search..." -i)"; if [ -n "$chosen" ]; then if [ -d "$chosen" ]; then code "$chosen"; else xdg-open "$chosen"; fi; fi']]
+local fileSearch = os.getenv("HOME") .. "/.config/hypr/scripts/file-search.sh"
 local browser = "google-chrome-stable"
 
 
@@ -166,11 +166,18 @@ hl.bind(mainMod .. " + N", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + space", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(menu))
-hl.bind(mainMod .. " + F", hl.dsp.exec_cmd(fileSearch))
+hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen())
+hl.bind(mainMod .. " + SHIFT + F", hl.dsp.exec_cmd(fileSearch))
 hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + p", hl.dsp.layout("togglesplit"))
-hl.bind(mainMod .. " + S", hl.dsp.exec_cmd("hyprshot -m region -c"))
+-- Screenshots
+local screenshotScript = os.getenv("HOME") .. "/.config/hypr/scripts/screenshot.sh"
+hl.bind("Print", hl.dsp.exec_cmd(screenshotScript .. " area"))
+hl.bind("SHIFT + Print", hl.dsp.exec_cmd(screenshotScript .. " screen"))
+hl.bind("ALT + Print", hl.dsp.exec_cmd(screenshotScript .. " window"))
+hl.bind(mainMod .. " + Print", hl.dsp.exec_cmd(screenshotScript .. " area"))
+hl.bind(mainMod .. " + S", hl.dsp.exec_cmd(screenshotScript .. " area"))
 hl.bind(mainMod .. " + W", hl.dsp.exec_cmd("killall -SIGUSR1 waybar"))
 
 -- Window Focus (Vim keys)
@@ -237,3 +244,13 @@ hl.bind(mainMod .. " + z", hl.dsp.exec_cmd("steam 'steam://rungameid/686060'"))
 
 -- Loads ~/.config/hypr/workspaces.lua
 require("workspaces")
+
+-- Layer rules (disable animations for screenshot selection and color picker)
+hl.layer_rule({
+    match = { namespace = "selection" },
+    no_anim = true,
+})
+hl.layer_rule({
+    match = { namespace = "hyprpicker" },
+    no_anim = true,
+})
